@@ -416,28 +416,40 @@ add_action(
 
 /**
  * After the theme is updated to this version, rebuild only the home page from the
- * new layout (the previous Elementor data is kept in the "_zawaya_el_backup" meta,
- * and the section templates go to Saved Templates). Other pages keep their content
- * and only pick up the new styling. Runs once.
+ * new layout. The previous Elementor data is kept in the "_zawaya_el_backup" meta,
+ * and the home sections go to Saved Templates. Other pages keep their content and
+ * only pick up the new styling.
+ *
+ * Elementor only saves for users who can edit the page, so this runs for an
+ * administrator (wp-admin or an authenticated REST call), never for a visitor.
+ * It is marked done only after the new layout is really saved.
  */
-add_action(
-	'init',
-	function () {
-		if ( wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ! zawaya_has_elementor() ) {
-			return;
+function zawaya_v5_maybe_apply() {
+	if ( ZAWAYA_VER === get_option( 'zawaya_v5_done' ) || ! zawaya_has_elementor() || ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	if ( get_transient( 'zawaya_v5_lock' ) ) {
+		return;
+	}
+	set_transient( 'zawaya_v5_lock', 1, 300 );
+	add_filter(
+		'zawaya_el_pages',
+		function ( $pages ) {
+			return array_intersect_key( $pages, array( 'home' => true ) );
 		}
-		if ( ZAWAYA_VER === get_option( 'zawaya_v5_applied' ) || get_transient( 'zawaya_v5_lock' ) ) {
-			return;
-		}
-		set_transient( 'zawaya_v5_lock', 1, 300 );
-		update_option( 'zawaya_v5_applied', ZAWAYA_VER, false );
-		add_filter(
-			'zawaya_el_pages',
-			function ( $pages ) {
-				return array_intersect_key( $pages, array( 'home' => true ) );
-			}
-		);
-		zawaya_el_import( true, true );
-	},
-	40
+	);
+	zawaya_el_import( true, true );
+	$home = get_page_by_path( 'home' );
+	$data = $home ? get_post_meta( $home->ID, '_elementor_data', true ) : '';
+	if ( is_string( $data ) && false !== strpos( $data, 'zawaya-venues' ) ) {
+		update_option( 'zawaya_v5_done', ZAWAYA_VER, false );
+	}
+}
+add_action( 'admin_init', 'zawaya_v5_maybe_apply' );
+add_filter(
+	'rest_request_after_callbacks',
+	function ( $response ) {
+		zawaya_v5_maybe_apply();
+		return $response;
+	}
 );
