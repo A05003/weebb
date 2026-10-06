@@ -103,7 +103,7 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - Leader bios
 
 
-## Deployment status (2026-10-06): theme 2.0.1 is LIVE
+## Deployment status (2026-10-06): theme 2.0.1 was deployed, then ROLLED BACK at the owner's request (live site = v1.1.1 again)
 - The owner approved deploying directly. Theme source: `theme/zawaya/` (v2.0.1). Uploaded in place to `wp-content/themes/zawaya/` through the Hostinger TUS upload API (`hosting_files_generate-upload-url`, user `u918801698`, domain `zawayaalmaali.com`). Same slug on purpose, so Customizer settings (logo, hero text, socials) are kept.
 - New: v5 header/footer (top bar, centred logo with split nav, full-screen mobile menu, gold booking band, 4-column footer, link to almaalicatering.com), `assets/css/v5.css`, `assets/js/v5.js`, widgets `zawaya-venues` (logos strip or cards with Google rating and map link) and `zawaya-reviews`, new home layout, palette navy #18203B / gold #E5AD83 / pearl #F7F3EE.
 - Only the home page (id 11) was rebuilt from the new layout (it ran once, as an administrator, via `zawaya_v5_maybe_apply()` in `inc/elementor.php`). About, services, projects and contact keep their content and only got the new styling and header/footer.
@@ -111,3 +111,8 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - LiteSpeed lazy-load swaps images late; images that must show up front use `class="skip-lazy" data-no-lazy="1"`.
 - Still missing from the owner: SF Pro AR font files (fallback Tajawal is bundled), real palace/buffet/tech photos, social links, working hours.
 - The 21st MCP server (`.mcp.json`) needs `API_KEY_21ST` and authorization.
+
+### Rollback done (2026-10-06, owner request)
+- Home page (id 11) data restored from `_zawaya_el_backup`; all theme files re-uploaded from the owner's `zawaya-elementor_2.zip` (identical to v1.1.1). Pages, menus and Customizer settings are untouched.
+- Leftovers on the server, harmless and unused by v1.1.1: files `inc/v5-data.php`, `assets/css/v5.css`, `assets/js/v5.js`; options `zawaya_v5_done`, `zawaya_v5_applied`, `zw_restore_done`; Elementor Saved Templates created for the home page by the v2 import.
+- The v2.0.1 source stays in `theme/zawaya/` in this repo, not deployed.
