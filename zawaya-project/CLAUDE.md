@@ -101,3 +101,13 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - Social media links
 - Working hours
 - Leader bios
+
+
+## Deployment status (2026-10-06): theme 2.0.1 is LIVE
+- The owner approved deploying directly. Theme source: `theme/zawaya/` (v2.0.1). Uploaded in place to `wp-content/themes/zawaya/` through the Hostinger TUS upload API (`hosting_files_generate-upload-url`, user `u918801698`, domain `zawayaalmaali.com`). Same slug on purpose, so Customizer settings (logo, hero text, socials) are kept.
+- New: v5 header/footer (top bar, centred logo with split nav, full-screen mobile menu, gold booking band, 4-column footer, link to almaalicatering.com), `assets/css/v5.css`, `assets/js/v5.js`, widgets `zawaya-venues` (logos strip or cards with Google rating and map link) and `zawaya-reviews`, new home layout, palette navy #18203B / gold #E5AD83 / pearl #F7F3EE.
+- Only the home page (id 11) was rebuilt from the new layout (it ran once, as an administrator, via `zawaya_v5_maybe_apply()` in `inc/elementor.php`). About, services, projects and contact keep their content and only got the new styling and header/footer.
+- Rollback: the original v1.1.1 theme is `zawaya-elementor.zip`; re-upload its files over `wp-content/themes/zawaya/`. The original home data is in post meta `_zawaya_el_backup` of page 11 (only the first backup is kept); copy it back to `_elementor_data`.
+- LiteSpeed lazy-load swaps images late; images that must show up front use `class="skip-lazy" data-no-lazy="1"`.
+- Still missing from the owner: SF Pro AR font files (fallback Tajawal is bundled), real palace/buffet/tech photos, social links, working hours.
+- The 21st MCP server (`.mcp.json`) needs `API_KEY_21ST` and authorization.
