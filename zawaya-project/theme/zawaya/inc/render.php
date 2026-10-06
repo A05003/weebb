@@ -193,7 +193,8 @@ function zw_render_flip_carousel( $items, $autoplay = true ) {
 				<?php foreach ( $items as $it ) : ?>
 					<div class="carousel-item">
 						<div class="flip" tabindex="0">
-							<div class="flip-face flip-front"<?php echo $it['image'] ? ' style="background-image:url(\'' . esc_url( $it['image'] ) . '\')"' : ''; ?>>
+							<div class="flip-face flip-front">
+								<?php if ( $it['image'] ) : ?><img class="flip-bg skip-lazy" data-no-lazy="1" src="<?php echo esc_url( $it['image'] ); ?>" alt="" loading="lazy" decoding="async"><?php endif; ?>
 								<div class="shade"><h3><?php echo esc_html( $it['title'] ); ?></h3></div>
 							</div>
 							<div class="flip-face flip-back">

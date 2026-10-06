@@ -45,7 +45,7 @@ function zawaya_render_venue_logos( array $items ) {
 	foreach ( $items as $v ) {
 		$logo = ! empty( $v['logo']['url'] ) ? $v['logo']['url'] : ZAWAYA_URI . '/demo/logos/' . $v['logo_file'];
 		printf(
-			'<a href="%s" target="_blank" rel="noopener" aria-label="%s"><img src="%s" alt="%s" loading="lazy"></a>',
+			'<a href="%s" target="_blank" rel="noopener" aria-label="%s"><img src="%s" alt="%s" class="skip-lazy" data-no-lazy="1" loading="lazy" decoding="async"></a>',
 			esc_url( zawaya_venue_map_url( $v['name'], $v['place_id'] ) ),
 			esc_attr( $v['name'] ),
 			esc_url( $logo ),
@@ -61,7 +61,7 @@ function zawaya_render_venue_cards( array $items ) {
 	foreach ( $items as $v ) {
 		$logo = ! empty( $v['logo']['url'] ) ? $v['logo']['url'] : ZAWAYA_URI . '/demo/logos/' . $v['logo_file'];
 		echo '<article class="zw-venue">';
-		printf( '<span class="zw-venue-logo"><img src="%s" alt="%s" loading="lazy"></span>', esc_url( $logo ), esc_attr( $v['name'] ) );
+		printf( '<span class="zw-venue-logo"><img src="%s" alt="%s" class="skip-lazy" data-no-lazy="1" loading="lazy" decoding="async"></span>', esc_url( $logo ), esc_attr( $v['name'] ) );
 		printf( '<h3>%s</h3><span class="zw-venue-dist">%s</span><p>%s</p>', esc_html( $v['name'] ), esc_html( $v['district'] . '، الرياض' ), esc_html( $v['capacity'] ) );
 		if ( '' !== (string) $v['rating'] ) {
 			printf(

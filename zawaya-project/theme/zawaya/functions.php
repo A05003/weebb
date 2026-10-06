@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZAWAYA_VER', '2.0.0' );
+define( 'ZAWAYA_VER', '2.0.1' );
 define( 'ZAWAYA_DIR', get_template_directory() );
 define( 'ZAWAYA_URI', get_template_directory_uri() );
 
@@ -68,9 +68,9 @@ function zawaya_assets() {
 	wp_enqueue_style( 'zawaya-fonts', ZAWAYA_URI . '/assets/fonts/tajawal.css', array(), ZAWAYA_VER );
 	wp_enqueue_style( 'zawaya-fa', ZAWAYA_URI . '/assets/fontawesome/css/all.min.css', array(), '6.5.2' );
 	wp_enqueue_style( 'zawaya-style', get_stylesheet_uri(), array(), ZAWAYA_VER );
-	wp_enqueue_style( 'zawaya-v5', ZAWAYA_URI . '/assets/css/v5.css', array( 'zawaya-style' ), ZAWAYA_VER );
+	wp_enqueue_style( 'zawaya-v5', ZAWAYA_URI . '/assets/css/v5.css', array( 'zawaya-style' ), ZAWAYA_VER . '.' . filemtime( ZAWAYA_DIR . '/assets/css/v5.css' ) );
 	wp_enqueue_script( 'zawaya-main', ZAWAYA_URI . '/assets/js/main.js', array(), ZAWAYA_VER, true );
-	wp_enqueue_script( 'zawaya-v5', ZAWAYA_URI . '/assets/js/v5.js', array( 'zawaya-main' ), ZAWAYA_VER, true );
+	wp_enqueue_script( 'zawaya-v5', ZAWAYA_URI . '/assets/js/v5.js', array( 'zawaya-main' ), ZAWAYA_VER . '.' . filemtime( ZAWAYA_DIR . '/assets/js/v5.js' ), true );
 	if ( is_singular( 'post' ) && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

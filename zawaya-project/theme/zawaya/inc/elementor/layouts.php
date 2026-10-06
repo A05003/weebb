@@ -171,7 +171,7 @@ function zawaya_layout_home() {
 							zwe_button( 'تعرّف علينا', zw_page_url( 'about-us' ), 'outline' ),
 						)
 					),
-					zwe_image( $about_img, array( '_css_classes' => 'zw-leaf-img', 'align' => 'center' ) ),
+					zwe_w( 'html', array( 'html' => '<figure class="zw-leaf-img-fig"><img class="skip-lazy" data-no-lazy="1" src="' . esc_url( $about_img['url'] ) . '" alt="استقبال الضيوف في إحدى مناسبات زوايا المعالي" width="900" height="506" loading="lazy" decoding="async"></figure>' ) ),
 					zwe_box_con(
 						'column',
 						array(

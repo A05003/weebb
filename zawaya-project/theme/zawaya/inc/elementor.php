@@ -284,8 +284,8 @@ function zawaya_el_import( $apply = true, $library = true ) {
 
 		if ( $apply ) {
 			$old = get_post_meta( $page_id, '_elementor_data', true );
-			if ( $old ) {
-				update_post_meta( $page_id, '_zawaya_el_backup', wp_slash( $old ) );
+			if ( $old && '' === (string) get_post_meta( $page_id, '_zawaya_el_backup', true ) ) {
+				update_post_meta( $page_id, '_zawaya_el_backup', wp_slash( $old ) ); // keep the first backup only.
 			}
 			$doc = \Elementor\Plugin::$instance->documents->get( $page_id, false );
 			if ( $doc ) {
