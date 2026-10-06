@@ -6,7 +6,7 @@ Live site: https://zawayaalmaali.com (WordPress on Hostinger, custom theme "zawa
 
 ## Folder layout
 - `site/` — static preview (5 pages: index, about, services, portfolio, contact; assets/site.css, site.js, img/). The current version is v4.
-- `sitebuild/build.py` — generates the 5 pages from a shared header and footer. Run it with `python3 sitebuild/build.py` after fixing the `OUT` path at the top.
+- `sitebuild/build.py` — generates the 5 pages from a shared header and footer. Run it with `python3 sitebuild/build.py` (OUT already points to ../site).
 - `zawaya-elementor.zip` — the theme currently installed on the live site (v1.1.1), already converted to Elementor.
 
 ## Brand
@@ -31,7 +31,7 @@ Live site: https://zawayaalmaali.com (WordPress on Hostinger, custom theme "zawa
 - Address: الرياض، حي نمار، طريق ديراب · Maps https://maps.app.goo.gl/ojz2gjjTVpB4kJrt7
 - Leadership: عبدالله علي صالح الفقيه (المدير التنفيذي), صالح مطيع الفقيه (المدير العام), بدر الفقيه (نائب المدير التنفيذي)
 
-## Owner's latest request (2026-10-06) — TO DO
+## Owner's latest request (2026-10-06): BUILT in preview v5 (not yet approved)
 "احذف الخانات الغير مهمه للشركة واجعل الهوية واضحه وبدون تشتت والخط العربي لم يتم تغييره وغير فكرة رؤوس الصفحات والاسفل واضف صور ولو تكون خارجيه واضف التعليقات ال5 نجوم حق القاعات جميعها في الاراء اضف الحديثه من كل المواقع واجعل الموقع غير ممل"
 
 In short:
@@ -42,7 +42,7 @@ In short:
 - Fill the reviews section with the 5-star reviews of all the halls, the most recent ones from every site.
 - Make the site less boring.
 
-Agreed plan, not built yet:
+Agreed plan (implemented in site/ v5; images are local only, reviews are translated Google excerpts, SF Pro AR files still missing):
 1. **Remove**:
    - star canvas, glows, orbits, cursor light, the "browser mock" in the hero, and the pulse badge (all SaaS leftovers)
    - the FAQ (Claude wrote it)

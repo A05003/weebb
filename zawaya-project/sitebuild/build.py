@@ -2,32 +2,19 @@
 import pathlib
 OUT = pathlib.Path(__file__).resolve().parent.parent / 'site'
 
+# Icons: Phosphor Icons (light weight), inlined. https://phosphoricons.com
 I = {
- 'arrow': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>',
- 'menu': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
- 'rings': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="14" r="6"/><path d="M10 4l2-2 2 2-2 2z"/></svg>',
- 'calendar': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3v3H8z"/></svg>',
- 'dish': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h18M5 17a7 7 0 0 1 14 0M12 8V6M10 6h4M2 20h20"/></svg>',
- 'light': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M5.6 5.6l2.1 2.1M18.4 5.6l-2.1 2.1M3 12h3M18 12h3"/><path d="M8 21h8M9 17h6l1-3a5 5 0 1 0-8 0z"/></svg>',
- 'camera': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>',
- 'phone': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
- 'mail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>',
- 'pin': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
- 'clock': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
- 'wa': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.7-.1 1.1z"/></svg>',
- 'check': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>',
- 'quote': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 7H6a3 3 0 0 0-3 3v4h4v4l4-4v-7zM21 7h-4a3 3 0 0 0-3 3v4h4v4l4-4v-7z"/></svg>',
- 'x': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
- 'ig': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
- 'xlogo': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.2 2h3.3l-7.2 8.3L23 22h-6.6l-5.2-6.8L5.2 22H1.9l7.7-8.8L1.4 2h6.8l4.7 6.2zm-1.2 18h1.8L7.1 3.9H5.2z"/></svg>',
- 'snap': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 0 5 2.2 5 5v3l2 .6-1.6 1.6 2.6 1.8c-1.4.8-3 .8-3.6 1.4-.4.5-.2 1.6-1.4 1.6-1 0-1.6-.6-3-.6s-2 .6-3 .6c-1.2 0-1-1.1-1.4-1.6-.6-.6-2.2-.6-3.6-1.4l2.6-1.8L5 11.6 7 11V8c0-2.8 2-5 5-5z"/></svg>',
- 'tiktok': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.3 1.8 3.8 4.1 4v3.1c-1.5 0-2.9-.4-4.1-1.2v6.3a6 6 0 1 1-6-6c.3 0 .6 0 .9.1v3.2a2.9 2.9 0 1 0 2 2.7V3z"/></svg>',
- 'gem': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 18M15 3l-3 18"/></svg>',
- 'shield': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
- 'users': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>',
- 'eye': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
- 'spark': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/></svg>',
- 'clockv': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+ 'arrow': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M222,128a6,6,0,0,1-6,6H54.49l61.75,61.76a6,6,0,1,1-8.48,8.48l-72-72a6,6,0,0,1,0-8.48l72-72a6,6,0,0,1,8.48,8.48L54.49,122H216A6,6,0,0,1,222,128Z"/></svg>',
+ 'menu': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M222,128a6,6,0,0,1-6,6H40a6,6,0,0,1,0-12H216A6,6,0,0,1,222,128ZM40,70H216a6,6,0,0,0,0-12H40a6,6,0,0,0,0,12ZM216,186H40a6,6,0,0,0,0,12H216a6,6,0,0,0,0-12Z"/></svg>',
+ 'x': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204.24,195.76a6,6,0,1,1-8.48,8.48L128,136.49,60.24,204.24a6,6,0,0,1-8.48-8.48L119.51,128,51.76,60.24a6,6,0,0,1,8.48-8.48L128,119.51l67.76-67.75a6,6,0,0,1,8.48,8.48L136.49,128Z"/></svg>',
+ 'phone': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.59,160.3l-47.24-21.17a14,14,0,0,0-13.28,1.22,4.81,4.81,0,0,0-.56.42l-24.69,21a1.88,1.88,0,0,1-1.68.06c-15.87-7.66-32.31-24-40-39.65a1.91,1.91,0,0,1,0-1.68l21.07-25a6.13,6.13,0,0,0,.42-.58,14,14,0,0,0,1.12-13.27L95.73,34.49a14,14,0,0,0-14.56-8.38A54.24,54.24,0,0,0,34,80c0,78.3,63.7,142,142,142a54.25,54.25,0,0,0,53.89-47.17A14,14,0,0,0,221.59,160.3ZM176,210C104.32,210,46,151.68,46,80A42.23,42.23,0,0,1,82.67,38h.23a2,2,0,0,1,1.84,1.31l21.1,47.11a2,2,0,0,1,0,1.67L84.73,113.15a4.73,4.73,0,0,0-.43.57,14,14,0,0,0-.91,13.73c8.87,18.16,27.17,36.32,45.53,45.19a14,14,0,0,0,13.77-1c.19-.13.38-.27.56-.42l24.68-21a1.92,1.92,0,0,1,1.6-.1l47.25,21.17a2,2,0,0,1,1.21,2A42.24,42.24,0,0,1,176,210Z"/></svg>',
+ 'mail': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,50H32a6,6,0,0,0-6,6V192a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V56A6,6,0,0,0,224,50ZM208.58,62,128,135.86,47.42,62ZM216,194H40a2,2,0,0,1-2-2V69.64l86,78.78a6,6,0,0,0,8.1,0L218,69.64V192A2,2,0,0,1,216,194Z"/></svg>',
+ 'pin': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z"/></svg>',
+ 'check': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76ZM230,128A102,102,0,1,1,128,26,102.12,102.12,0,0,1,230,128Zm-12,0a90,90,0,1,0-90,90A90.1,90.1,0,0,0,218,128Z"/></svg>',
+ 'wa': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M186.68,146.63l-32-16a6,6,0,0,0-6,.38L133,141.46A42.49,42.49,0,0,1,114.54,123L125,107.33a6,6,0,0,0,.38-6l-16-32A6,6,0,0,0,104,66a38,38,0,0,0-38,38,86.1,86.1,0,0,0,86,86,38,38,0,0,0,38-38A6,6,0,0,0,186.68,146.63ZM152,178a74.09,74.09,0,0,1-74-74,26,26,0,0,1,22.42-25.75l12.66,25.32-10.39,15.58a6,6,0,0,0-.54,5.63,54.43,54.43,0,0,0,29.07,29.07,6,6,0,0,0,5.63-.54l15.58-10.39,25.32,12.66A26,26,0,0,1,152,178ZM128,26A102,102,0,0,0,38.35,176.69L26.73,211.56a14,14,0,0,0,17.71,17.71l34.87-11.62A102,102,0,1,0,128,26Zm0,192a90,90,0,0,1-45.06-12.08,6.09,6.09,0,0,0-3-.81,6.2,6.2,0,0,0-1.9.31L40.65,217.88a2,2,0,0,1-2.53-2.53L50.58,178a6,6,0,0,0-.5-4.91A90,90,0,1,1,128,218Z"/></svg>',
+ 'ig': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,82a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162ZM176,26H80A54.06,54.06,0,0,0,26,80v96a54.06,54.06,0,0,0,54,54h96a54.06,54.06,0,0,0,54-54V80A54.06,54.06,0,0,0,176,26Zm42,150a42,42,0,0,1-42,42H80a42,42,0,0,1-42-42V80A42,42,0,0,1,80,38h96a42,42,0,0,1,42,42ZM190,76a10,10,0,1,1-10-10A10,10,0,0,1,190,76Z"/></svg>',
+ 'snap': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M245.87,182.68a6,6,0,0,0-3.85-4.43c-.4-.14-30.71-11.53-44.87-52.25l21.08-8.43a6,6,0,1,0-4.46-11.14l-20,8A148.66,148.66,0,0,1,190,80,62,62,0,0,0,66,80a151.37,151.37,0,0,1-3.72,34.48l-20.05-8a6,6,0,0,0-4.46,11.14L58.93,126A96.13,96.13,0,0,1,40,158.87c-12.85,14.44-25.91,19.34-26,19.38a6,6,0,0,0-2.08,10c6.6,6.19,16.83,7.2,26.71,8.18,6.51.64,13.23,1.31,17.16,3.47,3.76,2.07,7.36,7,10.85,11.79,5.21,7.13,11.11,15.22,20.12,17.53,8.5,2.16,17.09-.76,25.4-3.59,5.72-1.94,11.11-3.78,15.86-3.78s10.14,1.84,15.86,3.78c6.29,2.14,12.74,4.34,19.19,4.34a25.36,25.36,0,0,0,6.21-.75h0c9-2.3,14.91-10.39,20.12-17.52,3.49-4.78,7.09-9.72,10.85-11.79,3.93-2.16,10.65-2.83,17.16-3.47,9.88-1,20.11-2,26.71-8.18A6,6,0,0,0,245.87,182.68Zm-29.66,1.84c-7.71.76-15.68,1.55-21.76,4.9s-10.5,9.39-14.77,15.22-8.56,11.74-13.39,13c-5,1.28-11.61-1-18.57-3.32-6.38-2.17-13-4.42-19.72-4.42s-13.34,2.25-19.72,4.42c-7,2.37-13.53,4.6-18.57,3.32-4.83-1.24-9.18-7.2-13.39-13s-8.67-11.88-14.77-15.23-14-4.14-21.76-4.9c-3.37-.33-6.79-.67-9.89-1.21a93.88,93.88,0,0,0,18.55-15.9c8.24-9.11,17.44-22.86,23.35-42.48a1.42,1.42,0,0,0,.08-.18,5.47,5.47,0,0,0,.35-1.27A156.21,156.21,0,0,0,78,80a50,50,0,0,1,100,0,156.21,156.21,0,0,0,5.77,43.51,5.34,5.34,0,0,0,.35,1.27.89.89,0,0,0,.08.17c5.91,19.63,15.11,33.38,23.35,42.49a93.88,93.88,0,0,0,18.55,15.9C223,183.85,219.58,184.19,216.21,184.52Z"/></svg>',
+ 'tiktok': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,74a50.06,50.06,0,0,1-50-50,6,6,0,0,0-6-6H128a6,6,0,0,0-6,6V156a22,22,0,1,1-31.43-19.89A6,6,0,0,0,94,130.69V88a6,6,0,0,0-7-5.91C52.2,88.28,26,120.05,26,156a74,74,0,0,0,148,0V112.93A101.28,101.28,0,0,0,224,126a6,6,0,0,0,6-6V80A6,6,0,0,0,224,74Zm-6,39.8a89.13,89.13,0,0,1-46.5-16.69A6,6,0,0,0,162,102v54a62,62,0,0,1-124,0c0-27.72,18.47-52.48,44-60.38v31.53A34,34,0,1,0,134,156V30h28.29A62.09,62.09,0,0,0,218,85.71Z"/></svg>',
 }
 
 NAV = [('index.html', 'الرئيسية'), ('about.html', 'من نحن'), ('services.html', 'خدماتنا'), ('portfolio.html', 'معرض الأعمال'), ('contact.html', 'تواصل معنا')]
@@ -40,7 +27,7 @@ GMAP = 'https://www.google.com/maps/search/?api=1&query={q}&query_place_id={pid}
 
 # logo, name, district, capacity, google rating, review count, place_id
 VENUES = [
- ('lg-almasa.png', 'قصر الماسة', 'حي الجنادرية', '350–400 ضيف لكل قسم، وحديقة خارجية', '4.4', '1,168', 'ChIJFxXQuahVLj4RgLuvd6L65zg'),
+ ('lg-almasa.png', 'قصر الماسة', 'حي الجنادرية', '350-400 ضيف لكل قسم، وحديقة خارجية', '4.4', '1,168', 'ChIJFxXQuahVLj4RgLuvd6L65zg'),
  ('lg-multaqa.png', 'قصر روعة الملتقى', 'حي المعيزيلة', 'حتى 400 ضيفة، وصالة طعام لـ 450', '4.2', '2,058', 'ChIJz4SgnpCqLz4RfZI4qZWblVg'),
  ('lg-mawadda.png', 'قصر مودة', 'ظهرة نمار', 'حتى 450 ضيفة، ودرج زفة وممر رخامي', '4.1', '2,284', 'ChIJAeKfYLEQLz4R-v-M_03KlTo'),
  ('lg-diyar.png', 'قصر ليالي الديار', 'حي الحزم', 'قاعة بلا أعمدة، وأكثر من حفل في الوقت نفسه', '4.4', '1,347', 'ChIJr0Da5okRLz4RU4TXX8BSoDk'),
@@ -72,8 +59,8 @@ def header(cur):
 <header class="hdr">
   <div class="wrap hdr-in">
     <nav class="nav nav-r" aria-label="القائمة الرئيسية">{lk(NAV[:half])}</nav>
-    <a class="brand" href="index.html" aria-label="زوايا المعالي — الرئيسية"><img src="assets/img/logo-v.png" alt="زوايا المعالي" width="150" height="63"></a>
-    <nav class="nav nav-l" aria-label="القائمة الرئيسية (تابع)">{lk(NAV[half:])}<a class="btn btn-gold btn-sm" href="contact.html">احجز</a></nav>
+    <a class="brand" href="index.html" aria-label="زوايا المعالي الرئيسية"><img src="assets/img/logo-v.png" alt="زوايا المعالي" width="150" height="63"></a>
+    <nav class="nav nav-l" aria-label="القائمة الرئيسية (تابع)">{lk(NAV[half:])}<a class="btn btn-gold btn-sm" href="contact.html">احجز مناسبتك</a></nav>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="فتح القائمة">{I["menu"]}</button>
   </div>
 </header>
@@ -115,13 +102,13 @@ FOOTER = f'''<section class="bookband" aria-label="احجز الآن">
 <a class="wa" href="{WA}" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">{I["wa"]}</a>
 <script src="assets/site.js"></script>'''
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">\n<link rel="stylesheet" href="assets/site.css">'
+FONTS = '<link rel="icon" href="assets/img/logo-v.png">\n<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">\n<link rel="stylesheet" href="assets/site.css">'
 
 def page(fname, title, body, entry=False):
     if entry:  # the artifact entry page: the host adds doctype/html/head/body
         html = f'<meta charset="utf-8">\n<title>{title}</title>\n{FONTS}\n<script>document.documentElement.lang="ar";document.documentElement.dir="rtl";</script>\n{header(fname)}\n<main id="main">\n{body}\n</main>\n{FOOTER}\n'
     else:
-        html = f'<!doctype html>\n<html lang="ar" dir="rtl">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<title>{title}</title>\n{FONTS}\n</head>\n<body>\n{header(fname)}\n<main id="main">\n{body}\n</main>\n{FOOTER}\n</body>\n</html>\n'
+        html = f'<!doctype html>\n<html lang="ar" dir="rtl">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<title>{title}</title>\n<meta name="description" content="زوايا المعالي: خمسة قصور أفراح في الرياض مع تنسيق الزفاف والضيافة والعروض التقنية.">\n{FONTS}\n</head>\n<body>\n{header(fname)}\n<main id="main">\n{body}\n</main>\n{FOOTER}\n</body>\n</html>\n'
     (OUT / fname).write_text(html, encoding='utf-8')
 
 def pagehead(title, sub, img, crumb):
@@ -173,7 +160,7 @@ home = f'''<section class="hero">
       <p>نُدير خمسة قصور للأفراح والمؤتمرات في الرياض، ومعها مطاعم زوايا المعالي للبوفيه المفتوح والضيافة، وفريق تقني للإضاءة والعروض.</p>
       <a class="btn btn-line" href="about.html">تعرّف علينا</a>
     </div>
-    <figure class="a-photo leaf reveal"><img src="assets/img/about-main.jpg" alt="استقبال الضيوف في إحدى مناسبات زوايا المعالي" loading="lazy"></figure>
+    <figure class="a-photo bezel reveal"><img class="leaf" src="assets/img/about-main.jpg" alt="استقبال الضيوف في إحدى مناسبات زوايا المعالي" loading="lazy"></figure>
     <div class="a-vm reveal">
       <article><h3>رؤيتنا</h3><p>أن نكون الوجهة الأولى في إدارة وتشغيل قصور الأفراح وصناعة المناسبات في المملكة.</p></article>
       <hr class="dash">
@@ -184,9 +171,9 @@ home = f'''<section class="hero">
 
 <section class="sec">
   <div class="wrap">
-    <div class="head reveal"><span class="eyebrow">خدماتنا</span><h2>كل ما تحتاجه مناسبتك</h2></div>
+    <div class="head reveal"><h2>كل ما تحتاجه مناسبتك</h2></div>
     <div class="svc3">
-      <a class="svc reveal" href="services.html#halls"><img src="assets/img/about-hall.jpg" alt="" loading="lazy"><div><h3>القاعات وتنسيق الزفاف</h3><p>الكوشة والزفة وغرفة التجهيز بتنسيق يناسب ذوقكم.</p><span class="more">التفاصيل {I["arrow"]}</span></div></a>
+      <a class="svc svc-lg reveal" href="services.html#halls"><img src="assets/img/about-hall.jpg" alt="" loading="lazy"><div><h3>القاعات وتنسيق الزفاف</h3><p>الكوشة والزفة وغرفة التجهيز بتنسيق يناسب ذوقكم.</p><span class="more">التفاصيل {I["arrow"]}</span></div></a>
       <a class="svc reveal" href="services.html#catering"><img src="assets/img/about-hospitality.jpg" alt="" loading="lazy"><div><h3>الضيافة والبوفيه</h3><p>مطاعم زوايا المعالي: بوفيهات وقهوجية وحلويات.</p><span class="more">التفاصيل {I["arrow"]}</span></div></a>
       <a class="svc reveal" href="services.html#tech"><img src="assets/img/hero.jpg" alt="" loading="lazy"><div><h3>العروض التقنية</h3><p>صوتيات وإضاءة وجوبو وكشك Touchpix للضيوف.</p><span class="more">التفاصيل {I["arrow"]}</span></div></a>
     </div>
@@ -195,7 +182,7 @@ home = f'''<section class="hero">
 
 <section class="sec navy" id="venues">
   <div class="wrap">
-    <div class="head reveal"><span class="eyebrow">قصورنا</span><h2>خمسة قصور نُديرها في الرياض</h2></div>
+    <div class="head reveal"><h2>خمسة قصور نُديرها في الرياض</h2></div>
     <div class="venues">
       {''.join(f'<article class="venue reveal"><span class="logo"><img src="assets/img/{v[0]}" alt="شعار {v[1]}"></span><h3>{v[1]}</h3><span class="dist">{v[2]}، الرياض</span><p>{v[3]}</p><div class="rate">{stars(v[4])}<b>{v[4]}</b><small>{v[5]} تقييم في Google</small></div><a class="more" href="{vlink(v)}" target="_blank" rel="noopener">الموقع على الخريطة {I["arrow"]}</a></article>' for v in VENUES)}
     </div>
@@ -217,7 +204,7 @@ home = f'''<section class="hero">
 
 <section class="sec">
   <div class="wrap">
-    <div class="head reveal"><span class="eyebrow">لقطات</span><h2>من مناسباتنا</h2></div>
+    <div class="head reveal"><h2>من مناسباتنا</h2></div>
     <div class="strip reveal">
       <img class="leaf" src="assets/img/hero.jpg" alt="قصر روعة الملتقى ليلاً" loading="lazy">
       <img src="assets/img/about-hall.jpg" alt="قاعة أفراح مزينة" loading="lazy">
@@ -261,7 +248,7 @@ about = pagehead('من نحن', 'شركة عائلية سعودية تدير ق�
     </div>
   </div>
 </section>'''
-page('about.html', 'من نحن — زوايا المعالي', about)
+page('about.html', 'من نحن | زوايا المعالي', about)
 
 # ---------------- SERVICES ----------------
 def checks(items):
@@ -316,7 +303,7 @@ services = pagehead('خدماتنا', 'ثلاث خدمات تكمل بعضها: 
     </div>
   </div>
 </section>'''
-page('services.html', 'خدماتنا — زوايا المعالي', services)
+page('services.html', 'خدماتنا | زوايا المعالي', services)
 
 # ---------------- PORTFOLIO ----------------
 G = [
@@ -347,7 +334,7 @@ portfolio = pagehead('معرض الأعمال', 'لقطات من أفراحنا 
   <button class="lb-close" type="button" aria-label="إغلاق">{I["x"]}</button>
   <figure><img src="" alt=""><figcaption></figcaption></figure>
 </div>'''
-page('portfolio.html', 'معرض الأعمال — زوايا المعالي', portfolio)
+page('portfolio.html', 'معرض الأعمال | زوايا المعالي', portfolio)
 
 # ---------------- CONTACT ----------------
 contact = pagehead('تواصل معنا', 'احجز زيارة للقصر، أو اطلب عرض ضيافة وتجهيزات، وسيعود إليك فريقنا خلال يوم عمل.', 'about-main.jpg', 'تواصل معنا') + f'''
@@ -356,7 +343,7 @@ contact = pagehead('تواصل معنا', 'احجز زيارة للقصر، أو
     <div class="form-card">
       <h2>نموذج الحجز والاستفسار</h2>
       <p>الحقول المعلّمة بـ * مطلوبة.</p>
-      <div class="ok" id="form-ok" role="status" hidden>{I["check"]}<span>وصلنا طلبك (هذه معاينة: لم يُرسل شيء فعلياً).</span></div>
+      <div class="ok" id="form-ok" role="status" hidden>{I["check"]}<span>وصلنا طلبك (هذه معاينة ولم يُرسل شيء فعلياً).</span></div>
       <form id="booking" novalidate>
         <div class="fgrid">
           <div class="field"><label for="f-name">الاسم الكامل *</label><input id="f-name" name="name" autocomplete="name" data-req><span class="err" hidden></span></div>
@@ -386,5 +373,5 @@ contact = pagehead('تواصل معنا', 'احجز زيارة للقصر، أو
     </aside>
   </div>
 </section>'''
-page('contact.html', 'تواصل معنا — زوايا المعالي', contact)
+page('contact.html', 'تواصل معنا | زوايا المعالي', contact)
 print('built')
