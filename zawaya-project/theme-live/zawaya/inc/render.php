@@ -99,12 +99,12 @@ function zw_render_projects_list( $tabs = true ) {
 			?>
 			<section class="prj-row" id="<?php echo esc_attr( $p->post_name ); ?>">
 				<div class="wrap prj-split">
-					<a class="prj-logo" href="<?php echo esc_url( get_permalink( $p ) ); ?>"><img src="<?php echo esc_url( zw_project_logo( $p->ID, 'large' ) ); ?>" alt="<?php echo esc_attr( get_the_title( $p ) ); ?>" loading="lazy"></a>
+					<a class="prj-logo" href="#<?php echo esc_attr( $p->post_name ); ?>"><img src="<?php echo esc_url( zw_project_logo( $p->ID, 'large' ) ); ?>" alt="<?php echo esc_attr( get_the_title( $p ) ); ?>" loading="lazy"></a>
 					<div class="prj-info">
 						<?php if ( $type ) : ?>
 							<span class="pill"><?php echo esc_html( $type ); ?></span>
 						<?php endif; ?>
-						<h2><a href="<?php echo esc_url( get_permalink( $p ) ); ?>" style="color:inherit"><?php echo esc_html( get_the_title( $p ) ); ?></a></h2>
+						<h2><?php echo esc_html( get_the_title( $p ) ); ?></h2>
 						<?php zw_render_rating_chip( $p->ID ); ?>
 						<div class="about"><?php echo wp_kses_post( wpautop( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ) ) ); ?></div>
 						<?php if ( $facts ) : ?>
@@ -124,10 +124,11 @@ function zw_render_projects_list( $tabs = true ) {
 								</ul>
 							</div>
 						<?php endif; ?>
+						<?php zw_render_project_reviews_inline( $p->ID ); ?>
+						<?php zw_render_project_gallery( $p->ID ); ?>
 						<div class="prj-btns">
-							<a class="btn btn-gold" href="<?php echo esc_url( get_permalink( $p ) ); ?>">عرض التفاصيل</a>
 							<a class="btn btn-navy" href="<?php echo esc_url( zw_contact_url() ); ?>"><?php echo esc_html( zw_cta( $p->ID ) ); ?></a>
-							<?php zw_render_site_button( $p->ID, 'btn btn-soft' ); ?>
+							<?php zw_render_site_button( $p->ID, 'btn btn-gold' ); ?>
 							<?php if ( $link ) : ?>
 								<a class="btn btn-soft" href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>روابط القاعة</span></a>
 							<?php endif; ?>

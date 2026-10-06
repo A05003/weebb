@@ -92,3 +92,56 @@ function zw_render_project_reviews( $id ) {
 	</section>
 	<?php
 }
+
+
+/** Compact reviews block for a project row on the projects page. */
+function zw_render_project_reviews_inline( $id ) {
+	$r = zw_project_reviews( $id );
+	if ( ! $r ) {
+		return;
+	}
+	list( $rating, $count, $map, $quotes ) = $r;
+	echo '<div class="zw-prj-inrev"><h3>آراء الضيوف</h3>';
+	if ( '' !== $rating ) {
+		echo '<div class="zw-prj-sum"><span class="zw-prj-stars zw-prj-meter" style="--p:' . esc_attr( min( 100, max( 0, (float) $rating * 20 ) ) ) . '%" aria-hidden="true">★★★★★</span><b>' . esc_html( $rating ) . '</b><span>من 5' . ( $count ? ' · ' . esc_html( $count ) . ' تقييم في Google' : '' ) . '</span>';
+		if ( $map ) {
+			echo '<a class="zw-prj-maplink" href="' . esc_url( $map ) . '" target="_blank" rel="noopener">كل التقييمات على خرائط Google</a>';
+		}
+		echo '</div>';
+	}
+	if ( $quotes ) {
+		echo '<div class="zw-prj-quotes">';
+		foreach ( $quotes as $q ) {
+			echo '<figure class="zw-prj-quote"><blockquote><p>«' . esc_html( $q ) . '»</p></blockquote><figcaption>من تقييمات Google (مترجم)</figcaption></figure>';
+		}
+		echo '</div>';
+	}
+	echo '</div>';
+}
+
+/** Photo gallery of a project (thumbnails open in the lightbox). */
+function zw_render_project_gallery( $id ) {
+	$ids = array_filter( array_map( 'intval', explode( ',', (string) get_post_meta( $id, '_zw_gallery', true ) ) ) );
+	if ( ! $ids ) {
+		return;
+	}
+	echo '<div class="prj-gal">';
+	foreach ( $ids as $img ) {
+		$full = wp_get_attachment_image_url( $img, 'full' );
+		if ( $full ) {
+			echo '<a href="' . esc_url( $full ) . '" data-lightbox>' . wp_get_attachment_image( $img, 'zawaya-card', false, array( 'loading' => 'lazy' ) ) . '</a>'; // phpcs:ignore
+		}
+	}
+	echo '</div>';
+}
+
+/** Single project URLs now lead to the project's block on the projects page. */
+function zawaya_projects_redirect() {
+	if ( ! is_singular( 'zawaya_project' ) || is_preview() || isset( $_GET['elementor-preview'] ) || is_customize_preview() ) { // phpcs:ignore
+		return;
+	}
+	$post = get_queried_object();
+	wp_safe_redirect( zw_page_url( 'projects' ) . '#' . $post->post_name, 301 );
+	exit;
+}
+add_action( 'template_redirect', 'zawaya_projects_redirect' );

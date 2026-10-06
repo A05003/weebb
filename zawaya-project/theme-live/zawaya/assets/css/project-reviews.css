@@ -11,3 +11,14 @@
 .zw-prj-quote p{font-size:18px;line-height:1.9;margin:0;color:var(--ink,#131E47)}
 .zw-prj-quote figcaption{font-size:13.5px;color:var(--text,#3a4368)}
 .zw-prj-meter{font-size:22px;background:linear-gradient(to left,var(--gold,#D4AF37) var(--p,100%),#d9d4cc var(--p,100%));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* inside a project row on the projects page */
+.prj-row .zw-prj-inrev{margin:22px 0 4px}
+.prj-row .zw-prj-inrev h3{font-size:20px;margin:0 0 10px}
+.prj-row .zw-prj-sum{justify-content:flex-start;margin:0 0 14px;font-size:16px}
+.prj-row .zw-prj-sum b{font-size:26px}
+.prj-row .zw-prj-quotes{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.prj-row .zw-prj-quote{padding:18px}
+.prj-row .zw-prj-quote p{font-size:16px}
+.prj-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:18px 0 6px}
+.prj-gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}

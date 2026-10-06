@@ -123,3 +123,5 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - Wording rule from the owner: never state a number of palaces ("five"); say we operate the halls ("نشغّل القاعات"). The projects page excerpt (page 16) was updated accordingly.
 
 - Restaurant project (slug `maali`) shows a "الموقع الإلكتروني" button linking to https://almaalicatering.com on its page and in the projects list (`inc/project-site.php`; editable per project in the edit screen). Theme 1.2.2.
+
+- Theme 1.3.0: all projects (halls, restaurants, contractor) live together on the projects page, each block with details, rating and reviews, website button and gallery. Single project URLs 301-redirect to `/projects/#slug` (`zawaya_projects_redirect()` in `inc/project-reviews.php`); the single template stays as a fallback. Owner chose this on 2026-10-06.
