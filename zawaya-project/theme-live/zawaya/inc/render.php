@@ -76,17 +76,19 @@ function zw_render_projects_list( $tabs = true ) {
 	if ( ! $projects ) {
 		return false;
 	}
-	if ( $tabs ) :
-		?>
-		<nav class="prj-tabs" aria-label="المشاريع">
-			<div class="wrap">
-				<?php foreach ( $projects as $p ) : ?>
-					<a href="#<?php echo esc_attr( $p->post_name ); ?>"><?php echo esc_html( zw_short( $p->ID ) ); ?></a>
-				<?php endforeach; ?>
-			</div>
-		</nav>
-		<?php
-	endif;
+	$cards = array();
+	foreach ( $projects as $p ) {
+		$cards[] = array(
+			'image' => zw_project_logo( $p->ID, 'large' ),
+			'title' => get_the_title( $p ),
+			'text'  => wp_trim_words( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 18, '…' ),
+			'btn'   => 'عرض التفاصيل',
+			'link'  => '#' . $p->post_name,
+		);
+	}
+	echo '<div class="wrap prj-nav">';
+	zw_render_flip_carousel( $cards, false );
+	echo '</div>';
 	?>
 	<div class="prj-list">
 		<?php foreach ( $projects as $p ) : ?>

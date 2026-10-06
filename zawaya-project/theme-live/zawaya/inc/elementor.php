@@ -45,8 +45,8 @@ function zawaya_el_colors() {
 	return array(
 		'zwnavy'   => array( 'زوايا: كحلي', '#1D2D67', '' ),
 		'zwnavydk' => array( 'زوايا: كحلي داكن', '#131E47', '' ),
-		'zwgold'   => array( 'زوايا: ذهبي', '#D4AF37', '' ),
-		'zwhead'   => array( 'زوايا: العناوين', '#1D2D67', '#D4AF37' ),
+		'zwgold'   => array( 'زوايا: ذهبي', '#C9A227', '' ),
+		'zwhead'   => array( 'زوايا: العناوين', '#1D2D67', '#E2BC3F' ),
 		'zwtext'   => array( 'زوايا: النصوص', '#3A4368', '#C3C9DF' ),
 		'zwbg'     => array( 'زوايا: خلفية الأقسام', '#FFFFFF', '#0B1330' ),
 		'zwsoft'   => array( 'زوايا: خلفية فاتحة', '#F6F7FB', '#0B1330' ),
@@ -211,9 +211,9 @@ function zawaya_el_setup_kit() {
 	// Brand system colours, and no Google fonts (the theme ships its own Arabic font).
 	$settings['system_colors'] = array(
 		array( '_id' => 'primary', 'title' => 'Primary', 'color' => '#1D2D67' ),
-		array( '_id' => 'secondary', 'title' => 'Secondary', 'color' => '#D4AF37' ),
+		array( '_id' => 'secondary', 'title' => 'Secondary', 'color' => '#C9A227' ),
 		array( '_id' => 'text', 'title' => 'Text', 'color' => '#3A4368' ),
-		array( '_id' => 'accent', 'title' => 'Accent', 'color' => '#D4AF37' ),
+		array( '_id' => 'accent', 'title' => 'Accent', 'color' => '#C9A227' ),
 	);
 	$settings['system_typography'] = array(
 		array( '_id' => 'primary', 'title' => 'Primary', 'typography_typography' => 'custom', 'typography_font_weight' => '700' ),
