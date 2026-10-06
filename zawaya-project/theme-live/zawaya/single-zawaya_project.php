@@ -43,9 +43,9 @@ while ( have_posts() ) :
 				<?php endif; ?>
 				<div class="prj-btns">
 					<a class="btn btn-navy" href="<?php echo esc_url( zw_contact_url() ); ?>"><?php echo esc_html( zw_cta( $zw_id ) ); ?></a>
-					<?php zw_render_site_button( $zw_id, 'btn btn-gold' ); ?>
+					<?php zw_render_site_button( $zw_id, 'btn btn-soft' ); ?>
 					<?php if ( $zw_link ) : ?>
-						<a class="btn btn-soft" href="<?php echo esc_url( $zw_link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>روابط القاعة</span></a>
+						<a class="btn btn-gold" href="<?php echo esc_url( $zw_link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>لينكتري القاعة</span></a>
 					<?php endif; ?>
 					<?php if ( $zw_phone ) : ?>
 						<a class="btn btn-outline btn-phone" href="<?php echo esc_attr( zw_tel( $zw_phone ) ); ?>"><i class="fa-solid fa-phone"></i><span><?php echo esc_html( $zw_phone ); ?></span></a>

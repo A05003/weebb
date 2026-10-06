@@ -128,9 +128,9 @@ function zw_render_projects_list( $tabs = true ) {
 						<?php zw_render_project_gallery( $p->ID ); ?>
 						<div class="prj-btns">
 							<a class="btn btn-navy" href="<?php echo esc_url( zw_contact_url() ); ?>"><?php echo esc_html( zw_cta( $p->ID ) ); ?></a>
-							<?php zw_render_site_button( $p->ID, 'btn btn-gold' ); ?>
+							<?php zw_render_site_button( $p->ID, 'btn btn-soft' ); ?>
 							<?php if ( $link ) : ?>
-								<a class="btn btn-soft" href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>روابط القاعة</span></a>
+								<a class="btn btn-gold" href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>لينكتري القاعة</span></a>
 							<?php endif; ?>
 							<?php if ( $phone ) : ?>
 								<a class="btn btn-outline btn-phone" href="<?php echo esc_attr( zw_tel( $phone ) ); ?>"><i class="fa-solid fa-phone"></i><span><?php echo esc_html( $phone ); ?></span></a>
