@@ -1,0 +1,103 @@
+# Zawaya Al Maali — website redesign (handoff)
+
+Owner writes in Arabic, Saudi dialect; reply in that dialect. Company: شركة زوايا المعالي للأفراح والمناسبات. It runs 5 wedding palaces in Riyadh, plus مطاعم زوايا المعالي (catering) and a tech/AV team.
+Live site: https://zawayaalmaali.com (WordPress on Hostinger, custom theme "zawaya" + Elementor).
+**Never change the live site without the owner's explicit OK.** He reviews a preview first.
+
+## Folder layout
+- `site/` — static preview (5 pages: index, about, services, portfolio, contact; assets/site.css, site.js, img/). The current version is v4.
+- `sitebuild/build.py` — generates the 5 pages from a shared header and footer. Run it with `python3 sitebuild/build.py` after fixing the `OUT` path at the top.
+- `zawaya-elementor.zip` — the theme currently installed on the live site (v1.1.1), already converted to Elementor.
+
+## Brand
+- Navy #18203b, gold #e5ad83. Content language: Arabic, RTL.
+- Font: **SF Pro AR**, the same font as almaalicatering.com. It is used through the Blocksy custom font `ct_font_rahyb_font`, with two files:
+  - `alfont_com_SFProAR_regular.ttf` (400/500)
+  - `alfont_com_SFProAR_semibold.ttf` (600/700)
+  - Both are on the owner's Hostinger in the almaalicatering.com mirror (search the File Manager for "alfont_com_SFProAR").
+  - Put them in `site/assets/fonts/` and use @font-face. Until then the fallback is Noto Sans Arabic.
+  - The owner said "the Arabic font did not change", so the real files are required.
+- Patterns borrowed from almaalicatering.com:
+  - leaf corners: two opposite corners rounded, e.g. `border-radius: 28px 0`
+  - dashed gold rules: `rgba(229,173,131,.45)`
+  - headings at weight 400
+  - about section in 3 columns: story | photo | vision & mission
+  - service cards built from a photo with a dark overlay
+- Interactions inspired by omq.sa.com: reveal on scroll, counters, tilt, smooth transitions. Respect `prefers-reduced-motion`.
+
+## Contact
+- Phone 0570001853 · WhatsApp https://api.whatsapp.com/send/?phone=966570001853
+- Email info@zawayaalmaali.com
+- Address: الرياض، حي نمار، طريق ديراب · Maps https://maps.app.goo.gl/ojz2gjjTVpB4kJrt7
+- Leadership: عبدالله علي صالح الفقيه (المدير التنفيذي), صالح مطيع الفقيه (المدير العام), بدر الفقيه (نائب المدير التنفيذي)
+
+## Owner's latest request (2026-10-06) — TO DO
+"احذف الخانات الغير مهمه للشركة واجعل الهوية واضحه وبدون تشتت والخط العربي لم يتم تغييره وغير فكرة رؤوس الصفحات والاسفل واضف صور ولو تكون خارجيه واضف التعليقات ال5 نجوم حق القاعات جميعها في الاراء اضف الحديثه من كل المواقع واجعل الموقع غير ممل"
+
+In short:
+- Remove the sections that don't matter to the company and make the identity clear, without distractions.
+- The Arabic font still hasn't changed.
+- Change the idea of the page headers and the footer.
+- Add images, even external ones.
+- Fill the reviews section with the 5-star reviews of all the halls, the most recent ones from every site.
+- Make the site less boring.
+
+Agreed plan, not built yet:
+1. **Remove**:
+   - star canvas, glows, orbits, cursor light, the "browser mock" in the hero, and the pulse badge (all SaaS leftovers)
+   - the FAQ (Claude wrote it)
+   - the 6 generic "values" cards
+   - the "how we work" steps
+   - every placeholder: leader bios, working hours, empty gallery tiles
+2. **Identity**:
+   - Use real navy (#18203b) as the base, not near-black.
+   - Alternate with pearl sections (#f7f3ee) for rhythm.
+   - One motif only: leaf corners plus a dashed gold rule.
+3. **New header**:
+   - A slim top bar: phone, WhatsApp, location, socials.
+   - Below it, a centered logo with the nav split on both sides and a "احجز" button. It shrinks on scroll.
+   - On mobile: a full-screen navy menu.
+4. **New footer**:
+   - A gold "book now" band with a big phone number and WhatsApp.
+   - A navy footer with 4 columns: brand + socials, our 5 palaces (each linking to Google Maps), services, contact.
+   - A bottom copyright bar.
+5. **Home order**:
+   1. hero crossfade slideshow (Ken Burns) with the venue logos row
+   2. stats strip (23,578 clients · 13,533 events · +250 staff · 5 palaces)
+   3. about in 3 columns
+   4. 3 photo service cards
+   5. 5 venue cards (logo, district, capacity, Google rating, map link)
+   6. reviews carousel
+   7. gallery strip
+6. **Images**:
+   - The preview (claude.ai artifact) cannot load external images.
+   - On a real host or the live site, external images are fine. Prefer the owner's own photos from the WordPress media library or almaalicatering.com.
+   - Local photos: hero.jpg, about-main.jpg, about-hall.jpg, about-hospitality.jpg, about-banner.jpg, plus venue logos lg-*.png.
+7. **Reviews**:
+   - The data below comes from Google Places. It has no star rating or date per review.
+   - On the live site, install a Google-reviews plugin (e.g. "Widgets for Google Reviews" by Trustindex), filtered to 5 stars and sorted newest first, so the reviews update automatically.
+   - Label quotes "مترجم من تقييمات Google".
+
+## Venue data (Google Places, fetched 2026-10-06)
+| Venue | District | Google rating | # reviews | place_id | Positive quotes (English as returned) |
+|---|---|---|---|---|---|
+| قصر الماسة | الجنادرية | 4.4 | 1,168 | ChIJFxXQuahVLj4RgLuvd6L65zg | "It's A wedding venue, Very Big Hall & Dining, Parking also specious" |
+| قصر روعة الملتقى (High Hall Forum) | المعيزيلة | 4.2 | 2,058 | ChIJz4SgnpCqLz4RfZI4qZWblVg | "Great service and value for money." / "I had a happy experience visiting a friend wedding and five star for my experience" |
+| قاعة المودة | العوالي (*confirm it is theirs*) | 4.1 | 2,284 | ChIJAeKfYLEQLz4R-v-M_03KlTo | "Very nice and clean." / "Beautiful night" |
+| قصر ليالي الديار | الحزم | 4.4 | 1,347 | ChIJr0Da5okRLz4RU4TXX8BSoDk | "Very good overall. The services are excellent, and the parking area is spacious… the staff is very professional, and I have no complaints whatsoever." / "Great place, well organized, good management staff" / "Amazing place and good for big events." |
+| قاعة هيليون بالاس | بدر (*confirm*) | 4.3 | 1,432 | ChIJUevfTG8OLz4RV881J2weL3c | "Very good place for gathering 🌹" / "Nice place for party and wedding" |
+
+- Total: 8,289 Google reviews, weighted average ≈ 4.25.
+- Map link format: `https://www.google.com/maps/search/?api=1&query=<name>&query_place_id=<place_id>`
+- Capacities (from the owner's old site):
+  - الماسة: 350–400 per section, with a garden.
+  - الملتقى: up to 400 women, dining hall for 450.
+  - مودة: up to 450, with a زفة staircase.
+  - ليالي الديار and هيلون: halls with no columns.
+
+## Still missing from the owner
+- The SF Pro AR font files
+- Photos: buffet, Gobo, Touchpix, كوشة, palaces
+- Social media links
+- Working hours
+- Leader bios
