@@ -127,6 +127,7 @@ function zw_render_projects_list( $tabs = true ) {
 						<div class="prj-btns">
 							<a class="btn btn-gold" href="<?php echo esc_url( get_permalink( $p ) ); ?>">عرض التفاصيل</a>
 							<a class="btn btn-navy" href="<?php echo esc_url( zw_contact_url() ); ?>"><?php echo esc_html( zw_cta( $p->ID ) ); ?></a>
+							<?php zw_render_site_button( $p->ID, 'btn btn-soft' ); ?>
 							<?php if ( $link ) : ?>
 								<a class="btn btn-soft" href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>روابط القاعة</span></a>
 							<?php endif; ?>

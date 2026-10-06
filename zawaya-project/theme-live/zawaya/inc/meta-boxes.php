@@ -44,6 +44,7 @@ function zawaya_project_box( $post ) {
 	zawaya_field( 'آراء الضيوف (من Google)', '<textarea dir="auto" name="zw_reviews" rows="5" placeholder="رأي في كل سطر">' . esc_textarea( $m( '_zw_reviews' ) ) . '</textarea>', 'كل سطر = رأي إيجابي يظهر في صفحة هذا المشروع. إن تُرك فارغاً تُستخدم آراء القصر الجاهزة.' );
 	zawaya_field( 'تقييم Google', '<input type="text" name="zw_rating" value="' . esc_attr( $m( '_zw_rating' ) ) . '" dir="ltr" placeholder="4.4"> <input type="text" name="zw_rating_count" value="' . esc_attr( $m( '_zw_rating_count' ) ) . '" dir="ltr" placeholder="1,168">', 'التقييم (من 5) ثم عدد التقييمات.' );
 	zawaya_field( 'Google place_id (لرابط الخريطة)', '<input type="text" name="zw_place_id" value="' . esc_attr( $m( '_zw_place_id' ) ) . '" dir="ltr" placeholder="ChIJ...">' );
+	zawaya_field( 'الموقع الإلكتروني', '<input type="url" name="zw_site" value="' . esc_attr( $m( '_zw_site' ) ) . '" dir="ltr" placeholder="https://">', 'يظهر زر "الموقع الإلكتروني" في صفحة المشروع. اتركه فارغاً لإخفائه.' );
 	zawaya_field( 'رقم الحجز', '<input type="text" name="zw_phone" value="' . esc_attr( $m( '_zw_phone' ) ) . '" dir="ltr" placeholder="05xxxxxxxx">', 'اتركه فارغاً لإخفاء الزر.' );
 	zawaya_field( 'رابط "روابط القاعة" (Linktree أو غيره)', '<input type="url" name="zw_link" value="' . esc_attr( $m( '_zw_link' ) ) . '" dir="ltr" placeholder="https://">', 'اتركه فارغاً لإخفاء الزر.' );
 	zawaya_field( 'نص زر الحجز', '<input type="text" dir="auto" name="zw_cta" value="' . esc_attr( $m( '_zw_cta' ) ) . '" placeholder="احجز الآن">' );
@@ -134,6 +135,9 @@ function zawaya_save_meta( $post_id ) {
 		if ( isset( $_POST[ $f ] ) ) {
 			update_post_meta( $post_id, $k, sanitize_textarea_field( wp_unslash( $_POST[ $f ] ) ) );
 		}
+	}
+	if ( isset( $_POST['zw_site'] ) ) {
+		update_post_meta( $post_id, '_zw_site', esc_url_raw( wp_unslash( $_POST['zw_site'] ) ) );
 	}
 	if ( isset( $_POST['zw_link'] ) ) {
 		update_post_meta( $post_id, '_zw_link', esc_url_raw( wp_unslash( $_POST['zw_link'] ) ) );

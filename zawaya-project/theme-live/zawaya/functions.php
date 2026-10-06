@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZAWAYA_VER', '1.2.1' );
+define( 'ZAWAYA_VER', '1.2.2' );
 define( 'ZAWAYA_DIR', get_template_directory() );
 define( 'ZAWAYA_URI', get_template_directory_uri() );
 
@@ -23,6 +23,7 @@ require ZAWAYA_DIR . '/inc/contact.php';
 require ZAWAYA_DIR . '/inc/menus.php';
 require ZAWAYA_DIR . '/inc/demo-content.php';
 require ZAWAYA_DIR . '/inc/project-reviews.php';
+require ZAWAYA_DIR . '/inc/project-site.php';
 require ZAWAYA_DIR . '/inc/elementor.php';
 
 /**
