@@ -21,6 +21,7 @@ NAV = [('index.html', 'الرئيسية'), ('about.html', 'من نحن'), ('serv
 PHONE = '0570001853'
 EMAIL = 'info@zawayaalmaali.com'
 ADDR = 'الرياض، حي نمار، طريق ديراب'
+CATERING = 'https://almaalicatering.com'
 MAPS = 'https://maps.app.goo.gl/ojz2gjjTVpB4kJrt7'
 WA = 'https://api.whatsapp.com/send/?phone=966570001853'
 GMAP = 'https://www.google.com/maps/search/?api=1&query={q}&query_place_id={pid}'
@@ -88,6 +89,7 @@ FOOTER = f'''<section class="bookband" aria-label="احجز الآن">
     <div><h4>خدماتنا</h4><ul>
       <li><a href="services.html#halls">القاعات وتنسيق الزفاف</a></li>
       <li><a href="services.html#catering">الضيافة والبوفيه</a></li>
+      <li><a href="{CATERING}" target="_blank" rel="noopener">موقع مطاعم زوايا المعالي</a></li>
       <li><a href="services.html#tech">العروض التقنية</a></li>
       <li><a href="portfolio.html">معرض الأعمال</a></li>
     </ul></div>
@@ -285,7 +287,7 @@ services = pagehead('خدماتنا', 'ثلاث خدمات تكمل بعضها: 
           <h2>مطاعم زوايا المعالي: بوفيهات وضيافة فاخرة</h2>
           <p class="lead">ذراع الضيافة في المجموعة. طهاة ذوو خبرة وقوائم تجمع المطبخ السعودي والعربي والعالمي، داخل قصورنا وخارجها.</p>
           {checks(['بوفيه مفتوح بقوائم حسب الطلب', 'طبخ داخلي للذبائح', 'قهوجية وصبابين لخدمة الضيوف', 'محطات حلويات ومشروبات ساخنة وباردة', 'بوفيه نسائي متكامل', 'تجهيز أماكن التقديم وطاقم مدرّب'])}
-          <a class="btn btn-navy" href="contact.html">اطلب عرض ضيافة</a>
+          <a class="btn btn-navy" href="contact.html">اطلب عرض ضيافة</a> <a class="btn btn-line" href="{CATERING}" target="_blank" rel="noopener">موقع المطعم</a>
         </div>
       </div>
     </div>
