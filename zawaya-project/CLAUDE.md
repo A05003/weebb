@@ -116,3 +116,8 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - Home page (id 11) data restored from `_zawaya_el_backup`; all theme files re-uploaded from the owner's `zawaya-elementor_2.zip` (identical to v1.1.1). Pages, menus and Customizer settings are untouched.
 - Leftovers on the server, harmless and unused by v1.1.1: files `inc/v5-data.php`, `assets/css/v5.css`, `assets/js/v5.js`; options `zawaya_v5_done`, `zawaya_v5_applied`, `zw_restore_done`; Elementor Saved Templates created for the home page by the v2 import.
 - The v2.0.1 source stays in `theme/zawaya/` in this repo, not deployed.
+
+### Live theme 1.2.1 (2026-10-06) = v1.1.1 + motion + hall reviews (source in `theme-live/zawaya/`)
+- Motion from almaalicatering.com (Elementor entrance fadeInUp/Left/Right at 1.2s, highlighted headline with a double underline redrawn every 8s) plus feedback motion (button press/hover, card lift, magnetic buttons, reading-progress bar via CSS scroll-driven animation). Files: `assets/css/motion-v2.css`, `assets/js/motion-v2.js`. Respects `prefers-reduced-motion`. LiteSpeed delays JS until the first interaction; the script skips anything already on screen then. Old unused `motion.css` / `motion.js` are still on the server.
+- Per-hall Google rating and positive reviews on each project page: `inc/project-reviews.php`, `assets/css/project-reviews.css`; editable in the project edit screen (reviews, rating, count, place_id), defaults by slug (almasa, multaqa, mawadda, diyar, helon). A rating chip also shows in the projects list.
+- Wording rule from the owner: never state a number of palaces ("five"); say we operate the halls ("نشغّل القاعات"). The projects page excerpt (page 16) was updated accordingly.
