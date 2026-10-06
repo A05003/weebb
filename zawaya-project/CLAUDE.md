@@ -125,3 +125,5 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - Restaurant project (slug `maali`) shows a "الموقع الإلكتروني" button linking to https://almaalicatering.com on its page and in the projects list (`inc/project-site.php`; editable per project in the edit screen). Theme 1.2.2.
 
 - Theme 1.3.0: all projects (halls, restaurants, contractor) live together on the projects page, each block with details, rating and reviews, website button and gallery. Single project URLs 301-redirect to `/projects/#slug` (`zawaya_projects_redirect()` in `inc/project-reviews.php`); the single template stays as a fallback. Owner chose this on 2026-10-06.
+
+- Theme 1.4.1: day/night button now toggles instantly via an inline onclick (LiteSpeed delays scripts until the first touch, so the old handler lost the first click); `assets/js/main-v2.js` skips buttons with `data-zw-inline`; sun/moon icon is pure CSS. `assets/css/look-v2.css`: beige day mode (page and Elementor section colours), leaf-corner buttons with a soft sheen and press feedback, glass header with an animated dashed underline. Dark colours are untouched.

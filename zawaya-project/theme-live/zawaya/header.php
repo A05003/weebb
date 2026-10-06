@@ -34,12 +34,12 @@ $zw_projects = zw_projects();
 				)
 			);
 			?>
-			<button class="icon-btn js-theme" type="button" aria-label="الوضع الليلي" title="الوضع الليلي"><i class="fa-solid fa-moon"></i></button>
+			<button class="icon-btn js-theme" type="button" data-zw-inline="1" onclick="var d=document.documentElement,k=d.dataset.theme!=='dark';d.classList.add('zm-theming');d.dataset.theme=k?'dark':'light';try{localStorage.setItem('zawaya-theme',k?'dark':'light')}catch(e){}setTimeout(function(){d.classList.remove('zm-theming')},700)" aria-label="تبديل الوضع الليلي والنهاري" title="الوضع الليلي / النهاري"><i class="fa-solid fa-moon"></i></button>
 			<a class="btn btn-gold hdr-cta" href="<?php echo esc_url( zw_contact_url() ); ?>">تواصل معنا</a>
 		</nav>
 
 		<div class="hdr-mobile">
-			<button class="icon-btn js-theme" type="button" aria-label="الوضع الليلي" title="الوضع الليلي"><i class="fa-solid fa-moon"></i></button>
+			<button class="icon-btn js-theme" type="button" data-zw-inline="1" onclick="var d=document.documentElement,k=d.dataset.theme!=='dark';d.classList.add('zm-theming');d.dataset.theme=k?'dark':'light';try{localStorage.setItem('zawaya-theme',k?'dark':'light')}catch(e){}setTimeout(function(){d.classList.remove('zm-theming')},700)" aria-label="تبديل الوضع الليلي والنهاري" title="الوضع الليلي / النهاري"><i class="fa-solid fa-moon"></i></button>
 			<button class="icon-btn burger js-burger" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="mobile-nav"><i class="fa-solid fa-bars"></i></button>
 		</div>
 	</div>
