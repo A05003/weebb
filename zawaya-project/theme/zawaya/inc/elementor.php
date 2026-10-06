@@ -438,14 +438,17 @@ function zawaya_v5_maybe_apply() {
 			return array_intersect_key( $pages, array( 'home' => true ) );
 		}
 	);
-	zawaya_el_import( true, true );
+	$msgs = zawaya_el_import( true, true );
 	$home = get_page_by_path( 'home' );
 	$data = $home ? get_post_meta( $home->ID, '_elementor_data', true ) : '';
-	if ( is_string( $data ) && false !== strpos( $data, 'zawaya-venues' ) ) {
+	$ok   = is_string( $data ) && false !== strpos( $data, 'zawaya-venues' );
+	if ( $ok ) {
 		update_option( 'zawaya_v5_done', ZAWAYA_VER, false );
 	}
+	error_log( '[zawaya] v' . ZAWAYA_VER . ' home apply: ' . ( $ok ? 'ok' : 'not saved' ) . ' | ' . implode( ' / ', (array) $msgs ) ); // phpcs:ignore
 }
 add_action( 'admin_init', 'zawaya_v5_maybe_apply' );
+add_action( 'shutdown', 'zawaya_v5_maybe_apply' );
 add_filter(
 	'rest_request_after_callbacks',
 	function ( $response ) {
