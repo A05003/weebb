@@ -77,10 +77,10 @@ function zawaya_layout_home() {
 		'padding'                          => zwe_box( 90, 16, 120, 16 ),
 		'padding_mobile'                   => zwe_box( 70, 16, 80, 16 ),
 		'background_overlay_background'    => 'classic',
-		'background_overlay_color'         => '#0b3535',
+		'background_overlay_color'         => '#131E47',
 		'background_overlay_opacity'       => zwe_size( (int) zw_opt( 'hero_overlay' ) / 100 ),
 		'shape_divider_bottom'             => 'curve',
-		'shape_divider_bottom_color'       => '#14524f',
+		'shape_divider_bottom_color'       => '#1D2D67',
 		'shape_divider_bottom_height'      => zwe_size( 90 ),
 		'shape_divider_bottom_height_tablet' => zwe_size( 60 ),
 		'shape_divider_bottom_height_mobile' => zwe_size( 36 ),
@@ -95,7 +95,7 @@ function zawaya_layout_home() {
 			'background_play_once'      => '',
 			'background_play_on_mobile' => '',
 			'background_privacy_mode'   => 'yes',
-			'background_color'          => '#0b3535',
+			'background_color'          => '#131E47',
 		);
 	} else {
 		$hero_settings += array(
@@ -103,7 +103,7 @@ function zawaya_layout_home() {
 			'background_image'      => array( 'url' => $hero['url'], 'id' => $hero['id'] ),
 			'background_position'   => 'center center',
 			'background_size'       => 'cover',
-			'background_color'      => '#0b3535',
+			'background_color'      => '#131E47',
 		);
 	}
 	$out[] = zwe_con(

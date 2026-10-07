@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZAWAYA_VER', '1.6.0' );
+define( 'ZAWAYA_VER', '1.7.0' );
 define( 'ZAWAYA_DIR', get_template_directory() );
 define( 'ZAWAYA_URI', get_template_directory_uri() );
 
@@ -23,6 +23,7 @@ require ZAWAYA_DIR . '/inc/contact.php';
 require ZAWAYA_DIR . '/inc/menus.php';
 require ZAWAYA_DIR . '/inc/demo-content.php';
 require ZAWAYA_DIR . '/inc/project-reviews.php';
+require ZAWAYA_DIR . '/inc/halls.php';
 require ZAWAYA_DIR . '/inc/project-site.php';
 require ZAWAYA_DIR . '/inc/elementor.php';
 
@@ -124,7 +125,7 @@ function zawaya_meta_description() {
 	}
 	echo '<meta property="og:title" content="' . esc_attr( wp_get_document_title() ) . "\">\n";
 	echo '<meta property="og:locale" content="ar_SA">' . "\n";
-	echo '<meta name="theme-color" content="#0b3535">' . "\n";
+	echo '<meta name="theme-color" content="#131E47">' . "\n";
 	if ( is_singular() && has_post_thumbnail() ) {
 		echo '<meta property="og:image" content="' . esc_url( get_the_post_thumbnail_url( null, 'large' ) ) . "\">\n";
 	}

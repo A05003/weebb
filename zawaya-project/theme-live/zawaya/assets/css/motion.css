@@ -24,7 +24,7 @@ html.zm-ready .zm-in.zm-left{animation-name:zmFadeInLeft}
   .btn:active,.elementor-button:active,.carousel-btn:active,.icon-btn:active,.wa-float:active,.to-top:active{transform:scale(.97)}
   /* soft lift on cards */
   .prj-card,.partner,.post-card,.info-card,.vm-card,.value,.goal,.fact,.zw-counter{transition:transform .5s cubic-bezier(.32,.72,0,1),box-shadow .5s cubic-bezier(.32,.72,0,1)}
-  .prj-card:hover,.partner:hover,.post-card:hover,.info-card:hover,.vm-card:hover,.value:hover,.goal:hover,.fact:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,53,53,.16)}
+  .prj-card:hover,.partner:hover,.post-card:hover,.info-card:hover,.vm-card:hover,.value:hover,.goal:hover,.fact:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(19,30,71,.16)}
   /* magnetic pull (set from JS on fine pointers) */
   .zm-mag{translate:var(--mx,0) var(--my,0)}
   /* images settle in with a slow zoom-out */

@@ -134,14 +134,3 @@ function zw_render_project_gallery( $id ) {
 	}
 	echo '</div>';
 }
-
-/** Single project URLs now lead to the project's block on the projects page. */
-function zawaya_projects_redirect() {
-	if ( ! is_singular( 'zawaya_project' ) || is_preview() || isset( $_GET['elementor-preview'] ) || is_customize_preview() ) { // phpcs:ignore
-		return;
-	}
-	$post = get_queried_object();
-	wp_safe_redirect( zw_page_url( 'projects' ) . '#' . $post->post_name, 301 );
-	exit;
-}
-add_action( 'template_redirect', 'zawaya_projects_redirect' );

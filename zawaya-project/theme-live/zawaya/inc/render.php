@@ -67,83 +67,20 @@ function zw_render_projects_grid( $exclude = 0 ) {
 }
 
 /**
- * Full projects list with sticky tabs (projects page).
+ * Projects page: a light grid of cards, one per hall, each linking to the hall's own page.
  *
- * @param bool $tabs Show the tabs bar.
+ * @param bool $tabs Unused (kept for the Elementor widget setting).
  */
 function zw_render_projects_list( $tabs = true ) {
 	$projects = zw_projects();
 	if ( ! $projects ) {
 		return false;
 	}
-	$cards = array();
+	echo '<div class="wrap"><div class="hall-grid">';
 	foreach ( $projects as $p ) {
-		$cards[] = array(
-			'image' => zw_project_logo( $p->ID, 'large' ),
-			'title' => get_the_title( $p ),
-			'text'  => wp_trim_words( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 18, '…' ),
-			'btn'   => 'عرض التفاصيل',
-			'link'  => '#' . $p->post_name,
-		);
+		zw_render_hall_card( $p );
 	}
-	echo '<div class="wrap prj-nav">';
-	zw_render_flip_carousel( $cards, false );
-	echo '</div>';
-	?>
-	<div class="prj-list">
-		<?php foreach ( $projects as $p ) : ?>
-			<?php
-			$facts = zw_facts( $p->ID );
-			$feats = zw_lines( get_post_meta( $p->ID, '_zw_features', true ) );
-			$phone = get_post_meta( $p->ID, '_zw_phone', true );
-			$link  = get_post_meta( $p->ID, '_zw_link', true );
-			$type  = get_post_meta( $p->ID, '_zw_type', true );
-			?>
-			<section class="prj-row" id="<?php echo esc_attr( $p->post_name ); ?>">
-				<div class="wrap prj-split">
-					<a class="prj-logo" href="#<?php echo esc_attr( $p->post_name ); ?>"><img src="<?php echo esc_url( zw_project_logo( $p->ID, 'large' ) ); ?>" alt="<?php echo esc_attr( get_the_title( $p ) ); ?>" loading="lazy"></a>
-					<div class="prj-info">
-						<?php if ( $type ) : ?>
-							<span class="pill"><?php echo esc_html( $type ); ?></span>
-						<?php endif; ?>
-						<h2><?php echo esc_html( get_the_title( $p ) ); ?></h2>
-						<?php zw_render_rating_chip( $p->ID ); ?>
-						<div class="about"><?php echo wp_kses_post( wpautop( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ) ) ); ?></div>
-						<?php if ( $facts ) : ?>
-							<div class="facts">
-								<?php foreach ( $facts as $f ) : ?>
-									<div class="fact"><span class="k"><?php echo esc_html( $f[0] ); ?></span><span class="v"><?php echo esc_html( $f[1] ); ?></span></div>
-								<?php endforeach; ?>
-							</div>
-						<?php endif; ?>
-						<?php if ( $feats ) : ?>
-							<div class="feat-mini">
-								<h3>المميزات والخدمات</h3>
-								<ul>
-									<?php foreach ( $feats as $t ) : ?>
-										<li><i class="fa-solid fa-circle-check"></i><?php echo esc_html( $t ); ?></li>
-									<?php endforeach; ?>
-								</ul>
-							</div>
-						<?php endif; ?>
-						<?php zw_render_project_reviews_inline( $p->ID ); ?>
-						<?php zw_render_project_gallery( $p->ID ); ?>
-						<div class="prj-btns">
-							<a class="btn btn-navy" href="<?php echo esc_url( zw_contact_url() ); ?>"><?php echo esc_html( zw_cta( $p->ID ) ); ?></a>
-							<?php zw_render_site_button( $p->ID, 'btn btn-soft' ); ?>
-							<?php if ( $link ) : ?>
-								<a class="btn btn-gold" href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i><span>لينكتري القاعة</span></a>
-							<?php endif; ?>
-							<?php if ( $phone ) : ?>
-								<a class="btn btn-outline btn-phone" href="<?php echo esc_attr( zw_tel( $phone ) ); ?>"><i class="fa-solid fa-phone"></i><span><?php echo esc_html( $phone ); ?></span></a>
-							<?php endif; ?>
-						</div>
-					</div>
-				</div>
-			</section>
-		<?php endforeach; ?>
-	</div>
-	<?php
+	echo '</div></div>';
 	return true;
 }
 
