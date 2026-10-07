@@ -101,3 +101,31 @@ Agreed plan (implemented in site/ v5; images are local only, reviews are transla
 - Social media links
 - Working hours
 - Leader bios
+
+
+## Deployment status (2026-10-06): theme 2.0.1 was deployed, then ROLLED BACK at the owner's request (live site = v1.1.1 again)
+- The owner approved deploying directly. Theme source: `theme/zawaya/` (v2.0.1). Uploaded in place to `wp-content/themes/zawaya/` through the Hostinger TUS upload API (`hosting_files_generate-upload-url`, user `u918801698`, domain `zawayaalmaali.com`). Same slug on purpose, so Customizer settings (logo, hero text, socials) are kept.
+- New: v5 header/footer (top bar, centred logo with split nav, full-screen mobile menu, gold booking band, 4-column footer, link to almaalicatering.com), `assets/css/v5.css`, `assets/js/v5.js`, widgets `zawaya-venues` (logos strip or cards with Google rating and map link) and `zawaya-reviews`, new home layout, palette navy #18203B / gold #E5AD83 / pearl #F7F3EE.
+- Only the home page (id 11) was rebuilt from the new layout (it ran once, as an administrator, via `zawaya_v5_maybe_apply()` in `inc/elementor.php`). About, services, projects and contact keep their content and only got the new styling and header/footer.
+- Rollback: the original v1.1.1 theme is `zawaya-elementor.zip`; re-upload its files over `wp-content/themes/zawaya/`. The original home data is in post meta `_zawaya_el_backup` of page 11 (only the first backup is kept); copy it back to `_elementor_data`.
+- LiteSpeed lazy-load swaps images late; images that must show up front use `class="skip-lazy" data-no-lazy="1"`.
+- Still missing from the owner: SF Pro AR font files (fallback Tajawal is bundled), real palace/buffet/tech photos, social links, working hours.
+- The 21st MCP server (`.mcp.json`) needs `API_KEY_21ST` and authorization.
+
+### Rollback done (2026-10-06, owner request)
+- Home page (id 11) data restored from `_zawaya_el_backup`; all theme files re-uploaded from the owner's `zawaya-elementor_2.zip` (identical to v1.1.1). Pages, menus and Customizer settings are untouched.
+- Leftovers on the server, harmless and unused by v1.1.1: files `inc/v5-data.php`, `assets/css/v5.css`, `assets/js/v5.js`; options `zawaya_v5_done`, `zawaya_v5_applied`, `zw_restore_done`; Elementor Saved Templates created for the home page by the v2 import.
+- The v2.0.1 source stays in `theme/zawaya/` in this repo, not deployed.
+
+### Live theme 1.2.1 (2026-10-06) = v1.1.1 + motion + hall reviews (source in `theme-live/zawaya/`)
+- Motion from almaalicatering.com (Elementor entrance fadeInUp/Left/Right at 1.2s, highlighted headline with a double underline redrawn every 8s) plus feedback motion (button press/hover, card lift, magnetic buttons, reading-progress bar via CSS scroll-driven animation). Files: `assets/css/motion-v2.css`, `assets/js/motion-v2.js`. Respects `prefers-reduced-motion`. LiteSpeed delays JS until the first interaction; the script skips anything already on screen then. Old unused `motion.css` / `motion.js` are still on the server.
+- Per-hall Google rating and positive reviews on each project page: `inc/project-reviews.php`, `assets/css/project-reviews.css`; editable in the project edit screen (reviews, rating, count, place_id), defaults by slug (almasa, multaqa, mawadda, diyar, helon). A rating chip also shows in the projects list.
+- Wording rule from the owner: never state a number of palaces ("five"); say we operate the halls ("نشغّل القاعات"). The projects page excerpt (page 16) was updated accordingly.
+
+- Restaurant project (slug `maali`) shows a "الموقع الإلكتروني" button linking to https://almaalicatering.com on its page and in the projects list (`inc/project-site.php`; editable per project in the edit screen). Theme 1.2.2.
+
+- Theme 1.3.0: all projects (halls, restaurants, contractor) live together on the projects page, each block with details, rating and reviews, website button and gallery. Single project URLs 301-redirect to `/projects/#slug` (`zawaya_projects_redirect()` in `inc/project-reviews.php`); the single template stays as a fallback. Owner chose this on 2026-10-06.
+
+- Theme 1.4.1: day/night button now toggles instantly via an inline onclick (LiteSpeed delays scripts until the first touch, so the old handler lost the first click); `assets/js/main-v2.js` skips buttons with `data-zw-inline`; sun/moon icon is pure CSS. `assets/css/look-v2.css`: beige day mode (page and Elementor section colours), leaf-corner buttons with a soft sheen and press feedback, glass header with an animated dashed underline. Dark colours are untouched.
+
+- Theme 1.5.1: real gold (#C9A227, brighter #E2BC3F in dark; gradient on gold buttons), font switched to SF Pro AR (files in `assets/fonts/`, `tajawal-v2.css` defines it; Tajawal is the fallback), projects page: tabs removed and replaced by a service-style flip-card carousel with arrows that jump to each project (`prj-nav` in `zw_render_projects_list`), beige leaf-corner project blocks, scroll/hover motion. All in `assets/css/look-v3.css`. Page 16 excerpt reworded. Headless checks need ~9 s to pass the Hostinger browser check.
