@@ -67,7 +67,7 @@ function zw_render_projects_grid( $exclude = 0 ) {
 }
 
 /**
- * Projects page: a light grid of cards, one per hall, each linking to the hall's own page.
+ * Projects page: one full-width section per hall (short blurb + essential bullets), linking to the hall's own page.
  *
  * @param bool $tabs Unused (kept for the Elementor widget setting).
  */
@@ -76,11 +76,11 @@ function zw_render_projects_list( $tabs = true ) {
 	if ( ! $projects ) {
 		return false;
 	}
-	echo '<div class="wrap"><div class="hall-grid">';
-	foreach ( $projects as $p ) {
-		zw_render_hall_card( $p );
+	echo '<div class="prj-fulls">';
+	foreach ( array_values( $projects ) as $i => $p ) {
+		zw_render_hall_row( $p, $i );
 	}
-	echo '</div></div>';
+	echo '</div>';
 	return true;
 }
 

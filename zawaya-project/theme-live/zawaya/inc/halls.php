@@ -66,3 +66,45 @@ function zw_render_hall_card( $p ) {
 	</a>
 	<?php
 }
+
+/**
+ * One full-width section for a hall on the projects page: short blurb + essential bullets only.
+ *
+ * @param WP_Post $p Project.
+ * @param int     $i Position (alternates the layout).
+ */
+function zw_render_hall_row( $p, $i = 0 ) {
+	$type  = get_post_meta( $p->ID, '_zw_type', true );
+	$facts = zw_facts( $p->ID );
+	$feats = zw_lines( get_post_meta( $p->ID, '_zw_features', true ) );
+	$text  = has_excerpt( $p ) ? get_the_excerpt( $p ) : wp_strip_all_tags( strip_shortcodes( $p->post_content ) );
+	$items = array();
+	foreach ( array_slice( $facts, 0, 4 ) as $f ) {
+		$items[] = '<b>' . esc_html( $f[0] ) . ':</b> ' . esc_html( $f[1] );
+	}
+	foreach ( array_slice( $feats, 0, 2 ) as $f ) {
+		$items[] = esc_html( $f );
+	}
+	?>
+	<section class="prj-full<?php echo $i % 2 ? ' is-alt' : ''; ?>" id="<?php echo esc_attr( $p->post_name ); ?>" <?php echo zw_hall_style( $p ); // phpcs:ignore ?>>
+		<div class="wrap prj-full-in">
+			<a class="prj-full-logo" href="<?php echo esc_url( get_permalink( $p ) ); ?>"><img src="<?php echo esc_url( zw_project_logo( $p->ID, 'large' ) ); ?>" alt="<?php echo esc_attr( get_the_title( $p ) ); ?>" loading="lazy"></a>
+			<div class="prj-full-body">
+				<?php if ( $type ) : ?><span class="hall-pill"><?php echo esc_html( $type ); ?></span><?php endif; ?>
+				<h2><?php echo esc_html( get_the_title( $p ) ); ?></h2>
+				<?php zw_render_rating_chip( $p->ID ); ?>
+				<p class="prj-full-blurb"><?php echo esc_html( wp_trim_words( $text, 22, '…' ) ); ?></p>
+				<?php if ( $items ) : ?>
+					<ul class="prj-full-list">
+						<?php foreach ( $items as $it ) : ?><li><?php echo wp_kses( $it, array( 'b' => array() ) ); ?></li><?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+				<div class="hall-actions">
+					<a class="btn btn-navy" href="<?php echo esc_url( get_permalink( $p ) ); ?>">صفحة القاعة</a>
+					<a class="btn btn-outline" href="<?php echo esc_url( zw_contact_url() ); ?>"><?php echo esc_html( zw_cta( $p->ID ) ); ?></a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php
+}

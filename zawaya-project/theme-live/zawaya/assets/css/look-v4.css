@@ -96,7 +96,26 @@
 @media (min-width:981px){.hall-grid>.hall-card:last-child:nth-child(3n+1){grid-column:2}}
 
 /* hall colours: deep tone by day, its light opposite at night (the hero and the CTA band are always dark, so they use the light one) */
-.hall,.hall-card,.hall-mini{--acc:var(--acc-d,#C9A227)}
-html[data-theme="dark"] .hall,html[data-theme="dark"] .hall-card,html[data-theme="dark"] .hall-mini{--acc:var(--acc-n,#E2BC3F)}
+.hall,.hall-card,.hall-mini,.prj-full{--acc:var(--acc-d,#C9A227)}
+html[data-theme="dark"] .hall,html[data-theme="dark"] .hall-card,html[data-theme="dark"] .hall-mini,html[data-theme="dark"] .prj-full{--acc:var(--acc-n,#E2BC3F)}
 .hall-hero,.hall-cta{--acc:var(--acc-n,#E2BC3F)!important}
 html[data-theme="dark"] .hall-card,html[data-theme="dark"] .hall-fact,html[data-theme="dark"] .hall-feats,html[data-theme="dark"] .hall-mini{box-shadow:0 10px 28px rgba(0,0,0,.35)}
+
+/* ---- projects page: one full-width section per hall ---- */
+.prj-full{position:relative;min-height:min(80vh,620px);display:flex;align-items:center;padding:64px 0;background:var(--bg);border-top:1px solid var(--line)}
+.prj-full.is-alt{background:var(--bg-soft)}
+.prj-full::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:6px;background:var(--acc)}
+.prj-full-in{width:100%;display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.prj-full.is-alt .prj-full-logo{order:2}
+.prj-full-logo{display:grid;place-items:center;aspect-ratio:4/3;border-radius:30px 6px 30px 6px;padding:36px;background:radial-gradient(circle at 70% 20%,color-mix(in srgb,var(--acc) 30%,transparent),transparent 65%),color-mix(in srgb,var(--acc) 12%,#fff);box-shadow:0 22px 50px -18px color-mix(in srgb,var(--acc) 55%,transparent);transition:transform .6s cubic-bezier(.22,.8,.3,1)}
+.prj-full-logo:hover{transform:translateY(-6px) rotate(-.6deg)}
+.prj-full-logo img{max-height:100%;max-width:86%;object-fit:contain}
+.prj-full-body{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.prj-full h2{margin:0;color:var(--heading);font-size:clamp(26px,3.4vw,38px);line-height:1.4}
+.prj-full-blurb{margin:0;color:var(--text);font-size:18px;line-height:1.9;max-width:560px}
+.prj-full-list{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:10px;color:var(--text)}
+.prj-full-list li{position:relative;padding-inline-start:26px}
+.prj-full-list li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:12px;height:12px;border-radius:3px 1px 3px 1px;background:var(--acc);transform:rotate(45deg)}
+.prj-full-list b{color:var(--heading)}
+@media (max-width:860px){.prj-full{min-height:0;padding:44px 0}.prj-full-in{grid-template-columns:1fr;gap:28px}.prj-full.is-alt .prj-full-logo{order:0}.prj-full-logo{aspect-ratio:16/10;padding:24px}}
+@media (prefers-reduced-motion:reduce){.prj-full-logo{transition:none}}

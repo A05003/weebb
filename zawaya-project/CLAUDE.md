@@ -151,3 +151,5 @@ Owner asked: deploy; redesign "مشاريعنا" lighter; each hall gets its own
 - Hall pages are back: the 301 redirect to `/projects/#slug` was removed (`inc/project-reviews.php`); new `single-zawaya_project.php` (hero with logo, facts strip, features, gallery, guest reviews, CTA, other halls).
 - Files to upload to `wp-content/themes/zawaya/` (order): `assets/css/look-v4.css`, `assets/js/banner-v4.js`, `inc/halls.php`, `functions.php`, `inc/render.php`, `inc/project-reviews.php`, `single-zawaya_project.php`, `style.css`. Rollback: `zawaya-1.5.1-backup.zip`. (Notes above about 1.6.0 / green are superseded.)
 - Upload method: `hosting_files_generate-upload-url` then TUS POST + PATCH per file (curl, headers X-Auth / X-Auth-Rest / Tus-Resumable).
+
+- Projects page (final, 1.7.0): `zw_render_projects_list()` now renders one full-width section per hall via `zw_render_hall_row()` (`inc/halls.php`): logo panel, type pill, title, rating, one short blurb (22 words), max 6 bullets (4 facts + 2 features), buttons "صفحة القاعة" and booking. Alternating backgrounds, accent stripe, day/night colours. The card helper `zw_render_hall_card()` is no longer used on that page.
