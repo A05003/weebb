@@ -43,14 +43,14 @@ function zawaya_el_pages() {
 /** Brand colours registered as Elementor global colours. id => (title, light, dark). */
 function zawaya_el_colors() {
 	return array(
-		'zwnavy'   => array( 'زوايا: كحلي', '#1D2D67', '' ),
-		'zwnavydk' => array( 'زوايا: كحلي داكن', '#131E47', '' ),
+		'zwnavy'   => array( 'زوايا: كحلي', '#14524f', '' ),
+		'zwnavydk' => array( 'زوايا: كحلي داكن', '#0b3535', '' ),
 		'zwgold'   => array( 'زوايا: ذهبي', '#C9A227', '' ),
-		'zwhead'   => array( 'زوايا: العناوين', '#1D2D67', '#E2BC3F' ),
-		'zwtext'   => array( 'زوايا: النصوص', '#3A4368', '#C3C9DF' ),
-		'zwbg'     => array( 'زوايا: خلفية الأقسام', '#FFFFFF', '#0B1330' ),
-		'zwsoft'   => array( 'زوايا: خلفية فاتحة', '#F6F7FB', '#0B1330' ),
-		'zwcard'   => array( 'زوايا: البطاقات', '#FFFFFF', '#16224F' ),
+		'zwhead'   => array( 'زوايا: العناوين', '#14524f', '#E2BC3F' ),
+		'zwtext'   => array( 'زوايا: النصوص', '#34504c', '#bed3ce' ),
+		'zwbg'     => array( 'زوايا: خلفية الأقسام', '#FFFFFF', '#061f1e' ),
+		'zwsoft'   => array( 'زوايا: خلفية فاتحة', '#f1f6f4', '#061f1e' ),
+		'zwcard'   => array( 'زوايا: البطاقات', '#FFFFFF', '#0e403d' ),
 		'zwwhite'  => array( 'زوايا: أبيض', '#FFFFFF', '' ),
 	);
 }
@@ -210,9 +210,9 @@ function zawaya_el_setup_kit() {
 	$settings['custom_colors']   = $custom;
 	// Brand system colours, and no Google fonts (the theme ships its own Arabic font).
 	$settings['system_colors'] = array(
-		array( '_id' => 'primary', 'title' => 'Primary', 'color' => '#1D2D67' ),
+		array( '_id' => 'primary', 'title' => 'Primary', 'color' => '#14524f' ),
 		array( '_id' => 'secondary', 'title' => 'Secondary', 'color' => '#C9A227' ),
-		array( '_id' => 'text', 'title' => 'Text', 'color' => '#3A4368' ),
+		array( '_id' => 'text', 'title' => 'Text', 'color' => '#34504c' ),
 		array( '_id' => 'accent', 'title' => 'Accent', 'color' => '#C9A227' ),
 	);
 	$settings['system_typography'] = array(

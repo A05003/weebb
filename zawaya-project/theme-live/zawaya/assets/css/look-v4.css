@@ -1,0 +1,35 @@
+/* Look v4: emerald palette fixes for Elementor globals + modern, soft, interactive page banners. */
+
+/* ---- palette: Elementor global colours saved in the kit (override the old blue) ---- */
+html body[class]{--e-global-color-zwnavy:#14524F;--e-global-color-zwnavydk:#0B3535;--e-global-color-zwhead:#14524F;--e-global-color-zwtext:#34504C}
+html[data-theme="dark"] body[class]{--e-global-color-zwhead:#D4AF37;--e-global-color-zwtext:#BED3CE;--e-global-color-zwbg:#061F1E;--e-global-color-zwsoft:#061F1E;--e-global-color-zwcard:#0E403D}
+/* colours typed straight into the Elementor page data (hero overlay, curve under the hero) */
+html body .zw-hero::before{background-color:#0B3535!important}
+html body .zw-hero .elementor-shape .elementor-shape-fill{fill:#14524F!important}
+
+/* ---- page banner ---- */
+.banner{--mx:50%;--my:35%;isolation:isolate;min-height:420px;background-image:radial-gradient(ellipse at 15% 0%,rgba(201,162,39,.22),transparent 55%),linear-gradient(150deg,#14524F 0%,#0B3535 78%)}
+.banner--sm{min-height:360px}
+.banner-img{opacity:.9;scale:1.1;translate:0 var(--py,0px);animation:zbKen 30s ease-in-out infinite alternate;will-change:scale,translate}
+.banner-shade{background:linear-gradient(180deg,rgba(11,53,53,.52) 0%,rgba(11,53,53,.9) 100%)}
+.banner::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(520px circle at var(--mx) var(--my),rgba(226,188,63,.24),transparent 62%)}
+.banner::after{content:"";position:absolute;z-index:1;pointer-events:none;width:520px;height:520px;inset-inline-end:-150px;top:-190px;border:2px dashed rgba(201,162,39,.3);border-radius:50%;animation:zbSpin 70s linear infinite}
+.banner-inner{z-index:2;padding:96px 16px 128px}
+.banner .crumbs{padding:7px 20px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(201,162,39,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.banner h1{font-weight:700;text-shadow:0 4px 28px rgba(0,0,0,.28)}
+.banner p{color:#E9D9A2}
+.banner .type{border:1px solid rgba(201,162,39,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.banner .curve{height:clamp(44px,7vw,110px)}
+/* staggered entrance */
+.banner-inner>*{animation:zbRise .95s cubic-bezier(.22,.8,.3,1) both}
+.banner-inner>*:nth-child(2){animation-delay:.08s}
+.banner-inner>*:nth-child(3){animation-delay:.16s}
+.banner-inner>*:nth-child(4){animation-delay:.3s}
+.banner-inner>*:nth-child(5){animation-delay:.4s}
+.banner .bar{animation:zbDraw 1s cubic-bezier(.22,.8,.3,1) .45s both}
+@keyframes zbRise{from{opacity:0;transform:translateY(26px);filter:blur(6px)}}
+@keyframes zbDraw{from{transform:scaleX(0)}}
+@keyframes zbKen{from{scale:1.08}to{scale:1.18}}
+@keyframes zbSpin{to{transform:rotate(360deg)}}
+@media (max-width:640px){.banner{min-height:340px}.banner-inner{padding:72px 16px 104px}.banner::after{width:340px;height:340px;inset-inline-end:-120px;top:-130px}}
+@media (prefers-reduced-motion:reduce){.banner-img,.banner::after,.banner-inner>*,.banner .bar{animation:none!important}}

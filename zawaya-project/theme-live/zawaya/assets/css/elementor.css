@@ -19,20 +19,20 @@
 .elementor .zw-collage img{display:block;width:100%;height:auto;object-fit:cover;border-radius:14px}
 .elementor .zw-collage-main img{aspect-ratio:16/9}
 .elementor .zw-collage-sm img{aspect-ratio:4/3}
-.elementor .e-con.zw-badge{position:absolute;bottom:-22px;right:-10px;width:auto;box-shadow:0 12px 28px rgba(19,30,71,.3);z-index:2}
+.elementor .e-con.zw-badge{position:absolute;bottom:-22px;right:-10px;width:auto;box-shadow:0 12px 28px rgba(11,53,53,.3);z-index:2}
 @media (max-width:640px){.elementor .e-con.zw-badge{right:6px}}
 .elementor .zw-paras p+p{margin-top:14px}
 
 /* Vision & mission */
 .elementor .zw-vm{position:relative;overflow:hidden}
-.elementor .zw-vm .elementor-icon{background:rgba(19,30,71,.5)}
+.elementor .zw-vm .elementor-icon{background:rgba(11,53,53,.5)}
 
 /* Cards (goals, contact info) */
 .elementor .elementor-element.zw-card{background:var(--e-global-color-zwcard,#fff);border-radius:16px;padding:30px 28px;box-shadow:0 0 0 1px var(--line);transition:box-shadow .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
-.elementor .elementor-element.zw-card:hover{box-shadow:0 0 0 2px var(--gold),0 14px 30px rgba(19,30,71,.1)}
+.elementor .elementor-element.zw-card:hover{box-shadow:0 0 0 2px var(--gold),0 14px 30px rgba(11,53,53,.1)}
 .elementor .e-con:has(>.zw-goal){counter-reset:zwgoal}
 .elementor .zw-goal{position:relative;counter-increment:zwgoal}
-.elementor .zw-goal::before{content:counter(zwgoal,decimal-leading-zero);position:absolute;top:18px;left:22px;color:rgba(29,45,103,.1);font-size:clamp(34px,4.4vw,52px);font-weight:800;line-height:1;pointer-events:none}
+.elementor .zw-goal::before{content:counter(zwgoal,decimal-leading-zero);position:absolute;top:18px;left:22px;color:rgba(20,82,79,.1);font-size:clamp(34px,4.4vw,52px);font-weight:800;line-height:1;pointer-events:none}
 html[data-theme="dark"] .elementor .zw-goal::before{color:rgba(212,175,55,.12)}
 .elementor .zw-info .elementor-image-box-img img{width:60px;height:60px}
 
@@ -41,13 +41,13 @@ html[data-theme="dark"] .elementor .zw-goal::before{color:rgba(212,175,55,.12)}
 .elementor .zw-value .elementor-icon-box-description{max-width:280px;margin-inline:auto}
 
 /* Services page */
-.elementor .zw-svc-img img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px;box-shadow:0 20px 44px rgba(19,30,71,.16)}
+.elementor .zw-svc-img img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px;box-shadow:0 20px 44px rgba(11,53,53,.16)}
 .elementor .zw-svc-ic{margin-top:-50px;margin-inline-start:28px;position:relative;z-index:2}
 .elementor .zw-svc-ic .elementor-icon{border:3px solid var(--e-global-color-zwbg,#fff)}
 
 /* Buttons */
 .elementor .zw-btn .elementor-button{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease}
-.elementor .zw-btn:not(.zw-btn-link) .elementor-button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(19,30,71,.22)}
+.elementor .zw-btn:not(.zw-btn-link) .elementor-button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(11,53,53,.22)}
 .elementor .zw-btn-link .elementor-button:hover{opacity:.8}
 .elementor .zw-btn .elementor-button-icon svg{width:.8em;height:.8em}
 
@@ -64,15 +64,15 @@ html[data-theme="dark"] .elementor .zw-goal::before{color:rgba(212,175,55,.12)}
 
 /* Widgets */
 .zw-banner.no-crumbs .crumbs{display:none}
-.zw-editor-note{padding:18px 20px;border:1px dashed #b9c0d8;border-radius:12px;background:#f6f7fb;color:#3a4368;font-size:15px;text-align:center}
+.zw-editor-note{padding:18px 20px;border:1px dashed #a9c4be;border-radius:12px;background:#f1f6f4;color:#34504c;font-size:15px;text-align:center}
 .elementor-widget-zawaya-flip-cards,.elementor-widget-zawaya-projects{width:100%}
 
 /* Theme blocks used inside Elementor widgets: Elementor resets link shadows, restore ours */
-.elementor .logo-grid a{box-shadow:0 0 0 1px rgba(29,45,103,.1)}
+.elementor .logo-grid a{box-shadow:0 0 0 1px rgba(20,82,79,.1)}
 .elementor .logo-grid a:hover{box-shadow:0 0 0 2px var(--gold)}
-.elementor .partner{box-shadow:0 0 0 1px rgba(29,45,103,.08)}
+.elementor .partner{box-shadow:0 0 0 1px rgba(20,82,79,.08)}
 .elementor .prj-tabs a{box-shadow:0 0 0 1px var(--line)}
-.elementor .prj-logo{box-shadow:0 20px 44px rgba(19,30,71,.14),0 0 0 1px rgba(29,45,103,.08)}
-.elementor .btn:hover{box-shadow:0 10px 22px rgba(19,30,71,.22)}
+.elementor .prj-logo{box-shadow:0 20px 44px rgba(11,53,53,.14),0 0 0 1px rgba(20,82,79,.08)}
+.elementor .btn:hover{box-shadow:0 10px 22px rgba(11,53,53,.22)}
 .elementor .btn:active{box-shadow:none}
 .elementor .prj-logo img,.elementor .logo-grid img,.elementor .prj-card img{height:100%}

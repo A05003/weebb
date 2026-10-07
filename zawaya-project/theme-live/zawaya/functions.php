@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZAWAYA_VER', '1.5.1' );
+define( 'ZAWAYA_VER', '1.6.0' );
 define( 'ZAWAYA_DIR', get_template_directory() );
 define( 'ZAWAYA_URI', get_template_directory_uri() );
 
@@ -74,6 +74,8 @@ function zawaya_assets() {
 	wp_enqueue_style( 'zawaya-prj-reviews', ZAWAYA_URI . '/assets/css/project-reviews.css', array( 'zawaya-style' ), ZAWAYA_VER );
 	wp_enqueue_style( 'zawaya-motion', ZAWAYA_URI . '/assets/css/motion-v2.css', array( 'zawaya-style' ), ZAWAYA_VER );
 	wp_enqueue_script( 'zawaya-motion', ZAWAYA_URI . '/assets/js/motion-v2.js', array( 'zawaya-main' ), ZAWAYA_VER, true );
+	wp_enqueue_style( 'zawaya-look4', ZAWAYA_URI . '/assets/css/look-v4.css', array( 'zawaya-look', 'zawaya-motion' ), ZAWAYA_VER );
+	wp_enqueue_script( 'zawaya-banner', ZAWAYA_URI . '/assets/js/banner-v4.js', array( 'zawaya-main' ), ZAWAYA_VER, true );
 	if ( is_singular( 'post' ) && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -122,7 +124,7 @@ function zawaya_meta_description() {
 	}
 	echo '<meta property="og:title" content="' . esc_attr( wp_get_document_title() ) . "\">\n";
 	echo '<meta property="og:locale" content="ar_SA">' . "\n";
-	echo '<meta name="theme-color" content="#131E47">' . "\n";
+	echo '<meta name="theme-color" content="#0b3535">' . "\n";
 	if ( is_singular() && has_post_thumbnail() ) {
 		echo '<meta property="og:image" content="' . esc_url( get_the_post_thumbnail_url( null, 'large' ) ) . "\">\n";
 	}
