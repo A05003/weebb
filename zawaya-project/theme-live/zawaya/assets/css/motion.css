@@ -1,0 +1,47 @@
+/* Motion borrowed from almaalicatering.com (Elementor entrance animations + highlighted headline).
+   fadeInUp / fadeInRight / fadeInLeft at 1.2s, and a double underline that redraws every 8s. */
+@keyframes zmFadeInUp{from{opacity:0;transform:translate3d(0,60px,0)}to{opacity:1;transform:none}}
+@keyframes zmFadeInRight{from{opacity:0;transform:translate3d(80px,0,0)}to{opacity:1;transform:none}}
+@keyframes zmFadeInLeft{from{opacity:0;transform:translate3d(-80px,0,0)}to{opacity:1;transform:none}}
+@keyframes zmDraw{0%{stroke-dashoffset:1;opacity:1}13%{stroke-dashoffset:0}92%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+
+html.zm-ready .zm-pre{opacity:0}
+html.zm-ready .zm-in{animation-duration:1.2s;animation-timing-function:cubic-bezier(.22,.8,.3,1);animation-fill-mode:both;animation-delay:var(--zm-delay,0s)}
+html.zm-ready .zm-in.zm-up{animation-name:zmFadeInUp}
+html.zm-ready .zm-in.zm-right{animation-name:zmFadeInRight}
+html.zm-ready .zm-in.zm-left{animation-name:zmFadeInLeft}
+
+.zm-hl{position:relative;display:inline-block;white-space:nowrap}
+.zm-hl svg{position:absolute;inset-inline:-3%;bottom:-.3em;width:106%;height:.55em;overflow:visible;fill:none;stroke:var(--gold,#D4AF37);stroke-width:3;stroke-linecap:round;pointer-events:none}
+.zm-hl path{stroke-dasharray:1;stroke-dashoffset:1;animation:zmDraw 9.2s ease-in-out infinite}
+.zm-hl path+path{animation-delay:.15s}
+
+/* ---- extra motion (feedback + orientation) ---- */
+@media (prefers-reduced-motion:no-preference){
+  /* press and hover feedback on buttons */
+  .btn,.elementor-button,.carousel-btn,.icon-btn,.to-top,.wa-float,.zw-form button[type=submit]{transition:transform .35s cubic-bezier(.32,.72,0,1),background-color .25s,color .25s,box-shadow .25s,border-color .25s}
+  .btn:hover,.elementor-button:hover{transform:translateY(-2px)}
+  .btn:active,.elementor-button:active,.carousel-btn:active,.icon-btn:active,.wa-float:active,.to-top:active{transform:scale(.97)}
+  /* soft lift on cards */
+  .prj-card,.partner,.post-card,.info-card,.vm-card,.value,.goal,.fact,.zw-counter{transition:transform .5s cubic-bezier(.32,.72,0,1),box-shadow .5s cubic-bezier(.32,.72,0,1)}
+  .prj-card:hover,.partner:hover,.post-card:hover,.info-card:hover,.vm-card:hover,.value:hover,.goal:hover,.fact:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(19,30,71,.16)}
+  /* magnetic pull (set from JS on fine pointers) */
+  .zm-mag{translate:var(--mx,0) var(--my,0)}
+  /* images settle in with a slow zoom-out */
+  html.zm-ready .zm-in.elementor-widget-image{overflow:hidden}
+  html.zm-ready .zm-in img{animation:zmImgSettle 1.6s cubic-bezier(.22,.8,.3,1) both}
+}
+@keyframes zmImgSettle{from{transform:scale(1.1)}to{transform:scale(1)}}
+/* reading progress: thin gold bar, pure CSS (no scroll listener); only where scroll-driven animations exist */
+@keyframes zmProgress{to{transform:scaleX(1)}}
+@supports (animation-timeline:scroll()){
+  @media (prefers-reduced-motion:no-preference){
+    body::before{content:"";position:fixed;top:0;inset-inline:0;height:3px;background:var(--gold,#D4AF37);transform:scaleX(0);transform-origin:right center;z-index:1000;pointer-events:none;animation:zmProgress linear both;animation-timeline:scroll(root block)}
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.zm-ready .zm-pre{opacity:1}
+  html.zm-ready .zm-in{animation:none!important}
+  .zm-hl path{animation:none;stroke-dashoffset:0}
+}

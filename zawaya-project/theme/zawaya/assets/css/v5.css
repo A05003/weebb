@@ -1,0 +1,166 @@
+/* Zawaya Al Maali v2.0 design layer (loads after style.css).
+   One motif: leaf corners + dashed gold rule. Navy base, pearl sections. */
+@font-face{font-family:"SF Pro AR";src:local("SF Pro AR"),url(../fonts/alfont_com_SFProAR_regular.ttf) format("truetype");font-weight:400 500;font-display:swap}
+@font-face{font-family:"SF Pro AR";src:local("SF Pro AR Semibold"),url(../fonts/alfont_com_SFProAR_semibold.ttf) format("truetype");font-weight:600 700;font-display:swap}
+:root{--navy-900:#111833;--navy-700:#18203B;--gold:#E5AD83;--gold-ink:#9A5F33;--ink:#18203B;--heading:#18203B;--text:#4A5068;--bg:#FCFAF7;--bg-soft:#F7F3EE;--line:rgba(229,173,131,.45);--input-bg:#fff;--input-border:#D9D4CC;--leaf:28px 0;--leaf-s:14px 0;--spring:cubic-bezier(.32,.72,0,1);--font:"SF Pro AR","Tajawal",system-ui,sans-serif}
+html[data-theme="dark"]{--ink:#18203B;--heading:#18203B;--text:#4A5068;--bg:#FCFAF7;--bg-soft:#F7F3EE;--card:#fff;--line:rgba(229,173,131,.45);--input-bg:#fff;--input-border:#D9D4CC}
+body.zawaya{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.85}
+body.zawaya h1,body.zawaya h2,body.zawaya h3{font-weight:400;text-wrap:balance}
+body.zawaya h3{font-weight:600}
+body.zawaya p{text-wrap:pretty}
+body.zawaya :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:0}
+
+/* buttons */
+body.zawaya .btn,body.zawaya .zw-btn .elementor-button{border-radius:var(--leaf);font-weight:600;min-height:50px;padding-inline:28px;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:transform .4s var(--spring),background .25s,color .25s,border-color .25s}
+body.zawaya .btn:hover,body.zawaya .zw-btn .elementor-button:hover{transform:translateY(-2px)}
+body.zawaya .btn:active,body.zawaya .zw-btn .elementor-button:active{transform:scale(.97)}
+body.zawaya .btn-gold,body.zawaya .zw-btn-gold .elementor-button{background:var(--gold);color:var(--navy-700);border-color:var(--gold)}
+body.zawaya .btn-gold:hover{background:#efbf9b;color:var(--navy-700)}
+body.zawaya .btn-navy{background:var(--navy-700);color:#fff}
+body.zawaya .zw-btn-outline .elementor-button{border-radius:var(--leaf)}
+body.zawaya .zw-btn-ghost .elementor-button{border:1.5px solid rgba(255,255,255,.75)!important;color:#fff!important;background:transparent!important}
+body.zawaya .zw-btn-ghost .elementor-button:hover{background:#fff!important;color:var(--navy-700)!important}
+
+/* top bar */
+.zw-topbar{background:var(--navy-700);color:#e8dccf;font-size:14px}
+.zw-topbar-in{display:flex;gap:26px;align-items:center;min-height:38px;width:min(1180px,100% - 32px);margin-inline:auto}
+.zw-topbar a{color:inherit;display:inline-flex;align-items:center;gap:7px}
+.zw-topbar a:hover{color:var(--gold)}
+.zw-tb-loc{margin-inline-start:auto}
+
+/* header: centred logo, split nav */
+body.zawaya .site-header{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px dashed var(--line);box-shadow:none}
+body.zawaya .site-header.is-scrolled{box-shadow:0 6px 24px rgba(24,32,59,.1)}
+body.zawaya .site-header .hdr{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;min-height:84px;width:min(1180px,100% - 32px);margin-inline:auto;padding:0;transition:min-height .4s var(--spring)}
+body.zawaya .site-header.is-scrolled .hdr{min-height:60px}
+body.zawaya .site-header .brand img{height:64px;width:auto;transition:height .4s var(--spring)}
+body.zawaya .site-header.is-scrolled .brand img{height:48px}
+body.zawaya .site-header .nav{display:flex;align-items:center;gap:6px}
+body.zawaya .site-header .nav-l{justify-content:flex-end}
+body.zawaya .site-header .nav ul{display:flex;gap:6px;margin:0;padding:0;list-style:none}
+body.zawaya .site-header .nav a:not(.btn){color:var(--ink);padding:8px 14px;font-weight:500;position:relative;background:none}
+body.zawaya .site-header .nav a:not(.btn)::after{content:"";position:absolute;inset-inline:14px;bottom:2px;border-top:2px dashed var(--gold);transform:scaleX(0);transition:transform .3s var(--spring)}
+body.zawaya .site-header .nav a:not(.btn):hover::after,body.zawaya .site-header .nav .is-active>a::after,body.zawaya .site-header .nav .current-menu-item>a::after{transform:scaleX(1)}
+body.zawaya .site-header .nav li{border:0}
+body.zawaya .site-header .hdr-cta{min-height:42px;padding-inline:22px}
+body.zawaya .site-header .hdr-mobile{display:none}
+body.zawaya .mega{background:var(--bg);border-bottom:1px dashed var(--line)}
+
+/* full-screen mobile menu */
+body.zawaya .mobile-nav{position:fixed;inset:0;z-index:90;background:var(--navy-700);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:30px;overflow:auto}
+body.zawaya .mobile-nav.open{display:flex}
+body.zawaya .mobile-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center}
+body.zawaya .mobile-nav a:not(.btn){color:#fff;font-size:26px;padding:8px 20px;display:block}
+body.zawaya .mnav-logo{filter:brightness(0) invert(1);margin-bottom:20px;height:56px;width:auto}
+body.zawaya .mnav-x{position:absolute;top:18px;inset-inline-end:18px;background:none;border:0;color:#fff;font-size:22px;padding:12px;cursor:pointer}
+body.zawaya .icon-btn{border-radius:var(--leaf-s)}
+
+/* hero */
+body.zawaya .zw-hero{border-bottom:0}
+body.zawaya .zw-hero h1{letter-spacing:0}
+body.zawaya .zw-hero .elementor-heading-title{text-align:right}
+body.zawaya .zw-hero::after{content:"";position:absolute;inset-inline:0;bottom:0;border-bottom:2px dashed var(--line);pointer-events:none}
+.zw-logos{background:#fff;border-block:2px dashed var(--line)}
+.zw-logos-in{display:flex;justify-content:space-between;align-items:center;gap:18px;width:min(1180px,100% - 32px);margin-inline:auto;padding:14px 0;overflow-x:auto}
+.zw-logos img{height:54px;width:auto;max-width:none;object-fit:contain;transition:transform .4s var(--spring)}
+.zw-logos a:hover img{transform:scale(1.08)}
+
+/* counters */
+body.zawaya .zw-counter .elementor-counter-number-wrapper{font-variant-numeric:tabular-nums}
+body.zawaya .zw-counter .elementor-counter-title{color:#e8dccf}
+
+/* section headings + dashed rule */
+body.zawaya .zw-sec-title .elementor-heading-title{font-weight:400;font-size:clamp(26px,3.4vw,40px)}
+body.zawaya .zw-sec-title::after,body.zawaya .zw-dash-top::before{content:"";display:block;border-top:2px dashed var(--line);width:120px;margin:14px auto 0}
+body.zawaya .zw-dash-top::before{margin:0 0 12px}
+body.zawaya .zw-about3{grid-template-rows:auto!important;align-items:start}
+body.zawaya .zw-about3 .zw-leaf-img-fig{margin:0}
+body.zawaya .zw-about3 .zw-leaf-img-fig img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:var(--leaf)}
+
+/* flip cards (services) */
+body.zawaya .flip,body.zawaya .flip-face{border-radius:var(--leaf)}
+body.zawaya .flip-front .flip-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+body.zawaya .flip-front .shade{background:linear-gradient(0deg,rgba(24,32,59,.92),rgba(24,32,59,.1) 70%)}
+body.zawaya .flip-back{background:var(--navy-700);color:#eadfd2}
+body.zawaya .carousel-btn{border-radius:var(--leaf-s);background:var(--navy-700);color:#fff}
+body.zawaya .carousel-btn:hover{background:var(--gold);color:var(--navy-700)}
+
+/* venues */
+.zw-venues{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.zw-venue{background:#222c4d;border:1px dashed var(--line);border-radius:var(--leaf);padding:22px 18px;display:flex;flex-direction:column;gap:6px;color:#fff;transition:transform .4s var(--spring),border-color .3s}
+.zw-venue:hover{transform:translateY(-6px);border-color:var(--gold)}
+.zw-venue-logo{background:var(--bg);border-radius:var(--leaf-s);height:100px;display:grid;place-items:center;padding:10px;margin-bottom:8px}
+.zw-venue-logo img{max-height:80px;width:auto;max-width:100%;height:auto;object-fit:contain}
+.zw-venue h3{font-size:19px;margin:0;color:#fff}
+.zw-venue-dist{color:var(--gold);font-size:14.5px}
+.zw-venue p{font-size:14.5px;color:#d6d3df;margin:4px 0;flex:1;line-height:1.7}
+.zw-venue-rate{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.zw-venue-rate small{color:#bdb9cb;font-size:12.5px;flex-basis:100%}
+.zw-stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+.zw-more{color:var(--gold);font-weight:600;display:inline-flex;gap:8px;align-items:center}
+.zw-more:hover{color:#fff}
+
+/* reviews */
+.zw-reviews{position:relative}
+.zw-rev-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px 2px 18px}
+.zw-rev-track::-webkit-scrollbar{display:none}
+.zw-rev{flex:0 0 min(380px,86%);scroll-snap-align:start;margin:0;background:#fff;border:1px dashed var(--line);border-radius:var(--leaf);padding:28px;display:flex;flex-direction:column;gap:10px}
+.zw-rev blockquote{margin:0;flex:1}.zw-rev p{font-size:18px;margin:0}
+.zw-rev figcaption b{display:block}.zw-rev small{color:var(--text)}
+.zw-rev-ctl{display:flex;gap:10px;justify-content:center;margin-top:6px}
+.zw-rev-btn{width:46px;height:46px;border-radius:var(--leaf-s);border:1.5px solid var(--navy-700);background:none;color:var(--navy-700);cursor:pointer;display:grid;place-items:center}
+.zw-rev-btn:hover{background:var(--navy-700);color:#fff}
+.zw-rev-note{text-align:center;color:var(--text);margin-top:18px}
+
+/* inner page banner */
+body.zawaya .banner{background:var(--navy-700)}
+body.zawaya .banner-shade{background:linear-gradient(0deg,rgba(24,32,59,.9),rgba(24,32,59,.6))}
+body.zawaya .banner h1{font-weight:400}
+body.zawaya .banner .bar{border:0;border-top:2px dashed var(--line);background:none;height:0;width:120px}
+body.zawaya .banner .crumbs a,body.zawaya .banner .crumbs .cur{color:var(--gold)}
+body.zawaya .banner .curve,body.zawaya .zw-banner .curve,body.zawaya .banner svg.curve{display:none!important}
+
+/* forms */
+body.zawaya .zw-form input,body.zawaya .zw-form select,body.zawaya .zw-form textarea{background:#fff;border:1.5px solid var(--input-border);border-radius:var(--leaf-s);color:var(--ink)}
+body.zawaya .zw-form input:focus,body.zawaya .zw-form select:focus,body.zawaya .zw-form textarea:focus{border-color:var(--gold-ink);box-shadow:0 0 0 3px rgba(229,173,131,.35);outline:0}
+body.zawaya .zw-form button[type=submit]{background:var(--navy-700);color:#fff;border-radius:var(--leaf);min-height:50px;padding-inline:30px;font-weight:600;border:0;cursor:pointer;transition:transform .4s var(--spring),background .25s}
+body.zawaya .zw-form button[type=submit]:hover{background:#222c4d;transform:translateY(-2px)}
+
+/* book band + footer */
+.zw-bookband{background:var(--gold);color:var(--navy-700)}
+.zw-bookband-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:34px 0;width:min(1180px,100% - 32px);margin-inline:auto}
+.zw-bookband span{display:block;font-weight:600}
+.zw-bigphone{font-size:clamp(32px,5vw,56px);font-weight:600;line-height:1.2;color:var(--navy-700)}
+body.zawaya .site-footer{background:var(--navy-700);color:#d6d3df;padding-top:60px}
+body.zawaya .site-footer .ftr{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:40px}
+body.zawaya .site-footer h3{color:var(--gold);font-weight:600;font-size:17px}
+body.zawaya .site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+body.zawaya .site-footer a{color:#d6d3df}
+body.zawaya .site-footer a:hover{color:var(--gold)}
+body.zawaya .site-footer .ftr-about img{filter:brightness(0) invert(1);margin-bottom:12px;height:63px;width:auto}
+body.zawaya .site-footer .socials{display:flex;gap:10px;margin-top:14px}
+body.zawaya .site-footer .socials a{width:42px;height:42px;border-radius:var(--leaf-s);border:1px solid var(--line);display:grid;place-items:center}
+body.zawaya .site-footer .socials a:hover{background:var(--gold);color:var(--navy-700)}
+body.zawaya .site-footer .ftr-extra{margin-top:10px}
+body.zawaya .copy{background:var(--navy-700);border-top:1px dashed var(--line);color:#a9a6b8;font-size:14px;padding:18px 16px;text-align:center}
+body.zawaya .wa-float{border-radius:var(--leaf);background:#25d366}
+body.zawaya .to-top{border-radius:var(--leaf-s)}
+
+/* reveal: heavier spring */
+body.zawaya.zr-on main section,html.zr-on body main section:not(.zr-in){transition-timing-function:var(--spring)}
+
+@media (max-width:1000px){
+  .zw-venues{grid-template-columns:repeat(2,1fr)}.zw-venue:last-child{grid-column:1/-1}
+  body.zawaya .site-footer .ftr{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  body.zawaya .site-header .nav{display:none}
+  body.zawaya .site-header .hdr{grid-template-columns:1fr auto 1fr;min-height:72px}
+  body.zawaya .site-header .brand{grid-column:2}
+  body.zawaya .site-header .hdr-mobile{display:block;grid-column:3;justify-self:end}
+  body.zawaya .site-header .brand img{height:48px}
+  .zw-topbar .zw-tb-loc{display:none}.zw-topbar-in{justify-content:space-between}
+  .zw-logos-in{justify-content:flex-start;gap:26px}.zw-logos img{height:44px}
+}
+@media (max-width:520px){.zw-venues{grid-template-columns:1fr}body.zawaya .site-footer .ftr{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
