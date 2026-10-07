@@ -1,7 +1,7 @@
 /* Zawaya Al Maali — v5. One motif: leaf corners + dashed gold rule. */
 @font-face{font-family:"SF Pro AR";src:url(fonts/alfont_com_SFProAR_regular.ttf) format("truetype");font-weight:400 500;font-display:swap}
 @font-face{font-family:"SF Pro AR";src:url(fonts/alfont_com_SFProAR_semibold.ttf) format("truetype");font-weight:600 700;font-display:swap}
-:root{--navy:#0f3d3e;--navy-2:#175052;--gold:#d8b078;--gold-d:#8a6a2f;--paper:#fbf8f2;--leaf-s:14px 0;--spring:cubic-bezier(.32,.72,0,1);--pearl:#f3ece0;--ink:#0f3d3e;--mut:#586a66;--line:rgba(216,176,120,.45);--leaf:28px 0;--ease:cubic-bezier(.22,.8,.3,1);--f:"SF Pro AR","Noto Sans Arabic",system-ui,sans-serif}
+:root{--navy:#0f3d3e;--navy-2:#175052;--gold:#d8b078;--gold-d:#8a6a2f;--paper:#fbf8f2;--leaf-s:14px 0;--spring:cubic-bezier(.32,.72,0,1);--pearl:#f3ece0;--ink:#0f3d3e;--mut:#586a66;--line:rgba(216,176,120,.45);--leaf:28px 0;--ease:cubic-bezier(.22,.8,.3,1);--f:"SF Pro AR","Tajawal","Noto Sans Arabic",system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:110px}

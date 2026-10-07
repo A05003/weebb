@@ -17,7 +17,7 @@ I = {
  'tiktok': '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,74a50.06,50.06,0,0,1-50-50,6,6,0,0,0-6-6H128a6,6,0,0,0-6,6V156a22,22,0,1,1-31.43-19.89A6,6,0,0,0,94,130.69V88a6,6,0,0,0-7-5.91C52.2,88.28,26,120.05,26,156a74,74,0,0,0,148,0V112.93A101.28,101.28,0,0,0,224,126a6,6,0,0,0,6-6V80A6,6,0,0,0,224,74Zm-6,39.8a89.13,89.13,0,0,1-46.5-16.69A6,6,0,0,0,162,102v54a62,62,0,0,1-124,0c0-27.72,18.47-52.48,44-60.38v31.53A34,34,0,1,0,134,156V30h28.29A62.09,62.09,0,0,0,218,85.71Z"/></svg>',
 }
 
-NAV = [('index.html', 'الرئيسية'), ('about.html', 'من نحن'), ('services.html', 'خدماتنا'), ('portfolio.html', 'معرض الأعمال'), ('contact.html', 'تواصل معنا')]
+NAV = [('index.html', 'الرئيسية'), ('about.html', 'من نحن'), ('services.html', 'خدماتنا'), ('portfolio.html', 'مشاريعنا'), ('contact.html', 'تواصل معنا')]
 PHONE = '0570001853'
 EMAIL = 'info@zawayaalmaali.com'
 ADDR = 'الرياض، حي نمار، طريق ديراب'
@@ -91,7 +91,7 @@ FOOTER = f'''<section class="bookband" aria-label="احجز الآن">
       <li><a href="services.html#catering">الضيافة والبوفيه</a></li>
       <li><a href="{CATERING}" target="_blank" rel="noopener">موقع مطاعم زوايا المعالي</a></li>
       <li><a href="services.html#tech">العروض التقنية</a></li>
-      <li><a href="portfolio.html">معرض الأعمال</a></li>
+      <li><a href="portfolio.html">مشاريعنا</a></li>
     </ul></div>
     <div><h4>تواصل</h4><ul>
       <li><a class="ltr" href="tel:{PHONE}">{PHONE}</a></li>
@@ -130,7 +130,7 @@ def stars(r):
     return f'<span class="stars" role="img" aria-label="تقييم {r} من 5">★★★★★</span>'
 
 # ---------------- HOME ----------------
-slides = ['hero.jpg', 'about-main.jpg', 'about-hall.jpg', 'about-hospitality.jpg']
+slides = ['hero.jpg', 'about-hall.jpg', 'about-hospitality.jpg']
 home = f'''<section class="hero">
   <div class="slides" aria-hidden="true">{''.join(f'<img class="slide{" on" if i == 0 else ""}" src="assets/img/{s}" alt="">' for i, s in enumerate(slides))}</div>
   <div class="wrap hero-in">
@@ -318,8 +318,17 @@ G = [
 def gitem(cat, img, cap, tag):
     return f'<button class="g-item" type="button" data-cat="{cat}" aria-label="تكبير: {cap}"><img src="assets/img/{img}" alt="{cap}" loading="lazy"><span class="cap"><small>{tag}</small><b>{cap}</b></span></button>'
 
-portfolio = pagehead('معرض الأعمال', 'لقطات من أفراحنا وتجهيزاتنا وضيافتنا وقصورنا.', 'hero.jpg', 'معرض الأعمال') + f'''
-<section class="sec">
+def pcards():
+    return ''.join(f'<article class="pcard reveal"><span class="logo"><img src="assets/img/{v[0]}" alt="شعار {v[1]}"></span><h3>{v[1]}</h3><span class="dist">{v[2]}</span><p>{v[3]}</p><div class="btns"><a class="btn btn-navy btn-sm" href="{vlink(v)}" target="_blank" rel="noopener">الموقع على الخريطة</a><a class="btn btn-line btn-sm" href="contact.html">احجز زيارة</a></div></article>' for v in VENUES)
+PROJECTS = f'''<!--ZV:PROJECTS--><section class="sec" id="venues">
+  <div class="wrap">
+    <div class="head reveal"><h2>قصورنا وشركاتنا</h2></div>
+    <div class="plist">{pcards()}</div>
+  </div>
+</section><!--/ZV:PROJECTS-->'''
+
+portfolio = pagehead('مشاريعنا', 'قصورنا وشركاتنا، ولقطات من أفراحنا وتجهيزاتنا وضيافتنا.', 'hero.jpg', 'مشاريعنا') + PROJECTS + f'''
+<section class="sec pearl">
   <div class="wrap">
     <div class="filters" role="group" aria-label="تصفية المعرض">
       <button class="tab" type="button" data-filter="all" aria-pressed="true">الكل</button>
@@ -336,7 +345,7 @@ portfolio = pagehead('معرض الأعمال', 'لقطات من أفراحنا 
   <button class="lb-close" type="button" aria-label="إغلاق">{I["x"]}</button>
   <figure><img src="" alt=""><figcaption></figcaption></figure>
 </div>'''
-page('portfolio.html', 'معرض الأعمال | زوايا المعالي', portfolio)
+page('portfolio.html', 'مشاريعنا | زوايا المعالي', portfolio)
 
 # ---------------- CONTACT ----------------
 contact = pagehead('تواصل معنا', 'احجز زيارة للقصر، أو اطلب عرض ضيافة وتجهيزات، وسيعود إليك فريقنا خلال يوم عمل.', 'about-main.jpg', 'تواصل معنا') + f'''
