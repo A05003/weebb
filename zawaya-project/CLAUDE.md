@@ -142,3 +142,12 @@ Owner's new requests (mid-session): page headers (رؤوس الصفحات) must 
 - **Preview v6** (`site/`, `python3 sitebuild/build.py`): new emerald/champagne palette, modern interactive page heads, projects page with venue cards, `[hidden]` fix for the form notice, hero slideshow without the logo-text photo.
 - SF Pro AR files already exist in the live theme (`theme-live/zawaya/assets/fonts/`).
 - Local test recipe: WordPress 6.8 + sqlite-database-integration + `php -S` with a router; Playwright is in `/opt/node-tools`.
+
+## Session 2026-10-07 (later): theme 1.7.0 (live source `theme-live/zawaya/`, NOT yet uploaded: Hostinger file host `srv1063-files.hstgr.io` is blocked by the environment network policy)
+Owner asked: deploy; redesign "مشاريعنا" lighter; each hall gets its own page; drop the green, go back to navy + gold plus extra harmonising colours; hall colours must follow day/night, night colour = light opposite of the day colour.
+- Palette: navy + gold restored (green remap reverted). Extra accents in `look-v4.css` (`--sky --rose --wine --copper --lilac --steel --amber`), gold->rose->sky title bar, banner glows.
+- `inc/halls.php`: per-hall colour pairs (day deep / night light) by slug; `zw_hall_style()` sets `--acc-d/--acc-n`, CSS picks one by `html[data-theme]`. Hero and CTA band are always dark, so they use the night tone.
+- Projects page (`zw_render_projects_list`): light card grid (logo on a light tinted panel, type pill, rating, excerpt, link to the hall page). The old long blocks and arrow carousel are gone.
+- Hall pages are back: the 301 redirect to `/projects/#slug` was removed (`inc/project-reviews.php`); new `single-zawaya_project.php` (hero with logo, facts strip, features, gallery, guest reviews, CTA, other halls).
+- Files to upload to `wp-content/themes/zawaya/` (order): `assets/css/look-v4.css`, `assets/js/banner-v4.js`, `inc/halls.php`, `functions.php`, `inc/render.php`, `inc/project-reviews.php`, `single-zawaya_project.php`, `style.css`. Rollback: `zawaya-1.5.1-backup.zip`. (Notes above about 1.6.0 / green are superseded.)
+- Upload method: `hosting_files_generate-upload-url` then TUS POST + PATCH per file (curl, headers X-Auth / X-Auth-Rest / Tus-Resumable).

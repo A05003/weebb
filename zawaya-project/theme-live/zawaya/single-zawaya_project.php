@@ -10,7 +10,6 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 	$zw_id    = get_the_ID();
-	$zw_acc   = zw_hall_accent( $zw_id );
 	$zw_cover = (int) get_post_meta( $zw_id, '_zw_cover', true );
 	$zw_cover = $zw_cover ? wp_get_attachment_image_url( $zw_cover, 'full' ) : '';
 	$zw_type  = get_post_meta( $zw_id, '_zw_type', true );
@@ -19,7 +18,7 @@ while ( have_posts() ) :
 	$zw_phone = get_post_meta( $zw_id, '_zw_phone', true );
 	$zw_link  = get_post_meta( $zw_id, '_zw_link', true );
 	?>
-	<div class="hall" style="--acc:<?php echo esc_attr( $zw_acc ); ?>">
+	<div class="hall" <?php echo zw_hall_style( $zw_id ); // phpcs:ignore ?>>
 
 	<section class="hall-hero">
 		<?php if ( $zw_cover ) : ?><div class="hall-hero-bg" style="background-image:url('<?php echo esc_url( $zw_cover ); ?>')"></div><?php endif; ?>
@@ -113,7 +112,7 @@ while ( have_posts() ) :
 			<div class="sec-title"><h2>قاعات ومشاريع أخرى</h2><span class="bar"></span></div>
 			<div class="hall-others-row">
 				<?php foreach ( $zw_others as $o ) : ?>
-					<a class="hall-mini" href="<?php echo esc_url( get_permalink( $o ) ); ?>" style="--acc:<?php echo esc_attr( zw_hall_accent( $o ) ); ?>" title="<?php echo esc_attr( get_the_title( $o ) ); ?>">
+					<a class="hall-mini" href="<?php echo esc_url( get_permalink( $o ) ); ?>" <?php echo zw_hall_style( $o ); // phpcs:ignore ?> title="<?php echo esc_attr( get_the_title( $o ) ); ?>">
 						<img src="<?php echo esc_url( zw_project_logo( $o->ID, 'medium' ) ); ?>" alt="<?php echo esc_attr( get_the_title( $o ) ); ?>" loading="lazy">
 						<span><?php echo esc_html( zw_short( $o->ID ) ); ?></span>
 					</a>
